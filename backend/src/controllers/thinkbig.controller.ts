@@ -65,30 +65,12 @@ const getTransporter = async () => {
 };
 
 const getEtherealTransporter = async () => {
-  try {
-    const testAccount = await nodemailer.createTestAccount();
-    return {
-      transporter: nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-        port: 587,
-        secure: false,
-        auth: {
-          user: testAccount.user,
-          pass: testAccount.pass,
-        },
-      }),
-      isTest: true,
-    };
-  } catch (err) {
-    console.log('Ethereal setup failed, falling back to mock logger:', err);
-  }
   return {
     transporter: {
       sendMail: async (mailOptions: any) => {
         console.log('--- [MOCK MAIL SENDER - THINKBIG REGISTRATION] ---');
         console.log(`To: ${mailOptions.to}`);
         console.log(`Subject: ${mailOptions.subject}`);
-        console.log(`Content: ${mailOptions.text}`);
         console.log('--------------------------------------------------');
         return { messageId: 'mock-tb-reg-msg-id-' + Math.random().toString(36).substring(2, 9) };
       },

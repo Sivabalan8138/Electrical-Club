@@ -48,23 +48,6 @@ const getTransporter = async () => {
 };
 
 const getEtherealTransporter = async () => {
-  try {
-    const testAccount = await nodemailer.createTestAccount();
-    return {
-      transporter: nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-        port: 587,
-        secure: false,
-        auth: {
-          user: testAccount.user,
-          pass: testAccount.pass,
-        },
-      }),
-      isTest: true,
-    };
-  } catch (err) {
-    console.log('Ethereal setup failed, falling back to mock logger:', err);
-  }
   return {
     transporter: {
       sendMail: async (mailOptions: any) => {
