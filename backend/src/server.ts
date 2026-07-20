@@ -37,12 +37,8 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin) || origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:')) {
-      callback(null, true);
-    } else {
-      console.log(`CORS blocked origin: ${origin}`);
-      callback(new Error(`Not allowed by CORS: ${origin}`));
-    }
+    // Allow all origins to prevent connection issues with dynamically generated Vercel URLs
+    callback(null, true);
   },
   credentials: true,
 }));
