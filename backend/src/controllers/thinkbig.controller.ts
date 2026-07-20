@@ -22,12 +22,12 @@ const extractTextFromFile = async (filePath: string): Promise<string> => {
       const data = await pdfParse(dataBuffer);
       return data.text;
     } else if (ext === '.pptx' || ext === '.ppt') {
-      return new Promise((resolve, reject) => {
-        officeParser.parse(filePath, (data: any, err: any) => {
-          if (err) return reject(err);
-          resolve(data);
-        });
-      });
+      try {
+        const text = await officeParser.parseOfficeAsync(filePath);
+        return text;
+      } catch (err) {
+        throw err;
+      }
     }
   } catch (err) {
     console.error('File text extraction failed:', err);
