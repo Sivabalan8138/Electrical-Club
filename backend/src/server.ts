@@ -30,6 +30,8 @@ const allowedOrigins = [
   'http://electrical-club-admin-portal:3001',
   'http://electrical-club-Admin-portal',
   'http://electrical-club-Admin-portal:3001',
+  'https://electrical-club.vercel.app',
+  'https://electrical-club-admin.vercel.app',
   process.env.FRONTEND_URL
 ].filter(Boolean) as string[];
 
@@ -153,9 +155,12 @@ app.post('/api/admin/smtp-settings', verifyToken, requireAdmin, updateSMTPSettin
 app.get('/api/registration-status', getRegistrationStatus);
 app.post('/api/admin/registration-status', verifyToken, requireAdmin, updateRegistrationStatus);
 
-// 8. Health check
+// 8. Health check & Root
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'healthy', timestamp: new Date() });
+});
+app.get('/', (req, res) => {
+  res.send('<h1>Electrical Club API is running! ⚡</h1><p>The backend is successfully connected and listening for requests.</p>');
 });
 
 // Start Server
