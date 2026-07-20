@@ -1,0 +1,121 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Admin {
+  id             String   @id @default(uuid())
+  username       String   @unique
+  passwordHash   String
+  isFirstLogin   Boolean  @default(true)
+  createdAt      DateTime @default(now())
+}
+
+model ElectroQuestRegistration {
+  id                     String        @id @default(uuid())
+  teamName               String
+  candidateId            String        @unique
+  member1Name            String
+  member1RegisterNumber  String
+  member1Department      String
+  member1Year            String
+  member1Email           String
+  member1MobileNumber    String
+  member2Name            String?
+  member2RegisterNumber  String?
+  member2Department      String?
+  member2Year            String?
+  member2Email           String?
+  member2MobileNumber    String?
+  isEmailSent            Boolean       @default(false)
+  createdAt              DateTime      @default(now())
+  quizAttempt            QuizAttempt?
+}
+
+model Question {
+  id            String   @id @default(uuid())
+  category      String
+  text          String
+  optionA       String
+  optionB       String
+  optionC       String
+  optionD       String
+  correctAnswer String // "A", "B", "C", or "D"
+  createdAt     DateTime @default(now())
+}
+
+model QuizAttempt {
+  id              String                @id @default(uuid())
+  registrationId  String                @unique
+  registration    ElectroQuestRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+  score           Float                 @default(0)
+  percentage      Float                 @default(0)
+  rank            Int?
+  timeTaken       Float                 @default(0) // in minutes
+  startedAt       DateTime              @default(now())
+  submittedAt     DateTime?
+  violationsCount Int                   @default(0)
+  status          String                @default("STARTED") // "STARTED", "COMPLETED", "DISQUALIFIED"
+  isCertSent      Boolean               @default(false)
+  certificateId   String?               @unique
+  violations      ProctoringViolation[]
+}
+
+model ProctoringViolation {
+  id            String      @id @default(uuid())
+  quizAttemptId String
+  quizAttempt   QuizAttempt @relation(fields: [quizAttemptId], references: [id], onDelete: Cascade)
+  type          String      // "TAB_SWITCH", "NO_FACE", "MULTI_FACE", "LOOKING_AWAY", "NOISE", "DEV_TOOLS"
+  timestamp     DateTime    @default(now())
+  warningNumber Int
+  detail        String
+}
+
+model ThinkBigRegistration {
+  id                     String   @id @default(uuid())
+  teamName               String
+  domain                 String   // "Healthcare Technology", "Renewable Energy", "Agriculture Technology", "Artificial Intelligence (AI)"
+  member1Name            String
+  member1RegisterNumber  String
+  member1Department      String
+  member1Email           String
+  member1MobileNumber    String
+  member2Name            String
+  member2RegisterNumber  String
+  member2Department      String
+  member2Email           String
+  member2MobileNumber    String
+  member3Name            String?
+  member3RegisterNumber  String?
+  member3Department      String?
+  member3Email           String?
+  member3MobileNumber    String?
+  member4Name            String?
+  member4RegisterNumber  String?
+  member4Department      String?
+  member4Email           String?
+  member4MobileNumber    String?
+  pptUrl                 String?  // Cloudinary URL
+  pptName                String?
+  aiScore                Float?   // Out of 70
+  aiFeedback             String?  // JSON or text structure containing Strengths, Weaknesses, Suggestions
+  presentationScore      Float?   // Out of 30 (Entered by Admin)
+  finalScore             Float?   // Out of 100
+  approvalStatus         String   @default("PENDING") // "PENDING", "APPROVED", "REJECTED"
+  certificateId          String?  @unique
+  isCertSent             Boolean  @default(false)
+  createdAt              DateTime @default(now())
+}
+
+model Announcement {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  eventType String   // "General", "ElectroQuest", "ThinkBig"
+  createdAt DateTime @default(now())
+}
