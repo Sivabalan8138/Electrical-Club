@@ -1,5 +1,10 @@
 # Electrical Club VSB
 
+**🌍 Live Website URLs (Once Deployed):**
+- **Student Portal:** [https://electrical-club.vercel.app](https://electrical-club.vercel.app) *(Replace with your actual Vercel link!)*
+- **Admin Portal:** [https://electrical-club-admin.vercel.app](https://electrical-club-admin.vercel.app) *(Replace with your actual Vercel link!)*
+- **Backend API:** [https://electrical-club-backend.onrender.com](https://electrical-club-backend.onrender.com) *(Replace with your actual Render link!)*
+
 Welcome to the Electrical Club VSB Project! This is a comprehensive full-stack application built for the Electrical Club at VSB Engineering College. It includes a student-facing portal, an admin dashboard, and a robust backend API.
 
 ## Project Structure
