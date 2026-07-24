@@ -145,7 +145,6 @@ async function main() {
 
   // 3. Seed Sample Certificates
   const sampleCertIdEQ = 'EQ-CERT-SAMPLE-105';
-  const sampleCertIdTB = 'TB-CERT-SAMPLE-105';
 
   const existingCertEQ = await prisma.quizAttempt.findFirst({
     where: { certificateId: sampleCertIdEQ },
@@ -180,37 +179,6 @@ async function main() {
     console.log(`Seeded ElectroQuest sample certificate: ${sampleCertIdEQ}`);
   }
 
-  const existingCertTB = await prisma.thinkBigRegistration.findFirst({
-    where: { certificateId: sampleCertIdTB },
-  });
-
-  if (!existingCertTB) {
-    // Create Think Big sample registration
-    await prisma.thinkBigRegistration.create({
-      data: {
-        teamName: 'Solar Pioneers',
-        domain: 'Renewable Energy',
-        member1Name: 'Alice Smith',
-        member1RegisterNumber: 'VSB-TB-0001',
-        member1Department: 'ECE',
-        member1Email: 'alice.smith@vsb.edu.in',
-        member1MobileNumber: '9988776655',
-        member2Name: 'Bob Jones',
-        member2RegisterNumber: 'VSB-TB-0002',
-        member2Department: 'EEE',
-        member2Email: 'bob.jones@vsb.edu.in',
-        member2MobileNumber: '8877665544',
-        approvalStatus: 'APPROVED',
-        certificateId: sampleCertIdTB,
-        isCertSent: true,
-        finalScore: 88,
-        aiScore: 60,
-        presentationScore: 28,
-        createdAt: new Date(),
-      },
-    });
-    console.log(`Seeded Think Big sample certificate: ${sampleCertIdTB}`);
-  }
 
   console.log('Database seeding completed successfully.');
 }

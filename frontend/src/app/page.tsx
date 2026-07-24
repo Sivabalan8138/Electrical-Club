@@ -32,10 +32,8 @@ export default function LandingPage() {
   }, []);
 
   const timelineSteps = [
-    { date: 'July 20, 2026', title: 'Registrations Open', desc: 'Secure your team spot for ElectroQuest and Think Big events.' },
-    { date: 'July 25, 2026 (1:30 PM - 4:30 PM)', title: 'ElectroQuest Quiz Live', desc: 'Log in with Candidate ID for the 75-minute online proctored quiz.' },
-    { date: 'July 25, 2026 (12:30 PM)', title: 'Think Big Submission Deadline', desc: 'Upload your presentation slides (PPT/PDF) for AI evaluation.' },
-    { date: 'July 25, 2026 (1:30 PM - 4:30 PM)', title: 'Presentation & Final Round', desc: 'Approved teams pitch their ideas in front of the faculty panel.' },
+    { date: 'July 20, 2026', title: 'Registrations Open', desc: 'Secure your team spot for ElectroQuest.' },
+    { date: 'July 25, 2026 (1:30 PM - 4:30 PM)', title: 'ElectroQuest Quiz Live', desc: 'Log in with Candidate ID for the 70-minute online proctored quiz.' },
     { date: 'July 25, 2026 (After 4:00 PM)', title: 'Award & Certificate Distribution', desc: 'Receive digital certificates and cash awards directly in your email.' },
   ];
 
@@ -165,15 +163,6 @@ export default function LandingPage() {
                   <p className="text-xs text-gray-400">Our quiz uses browser security & dynamic proctor logs for fair results.</p>
                 </div>
               </li>
-              <li className="flex items-start space-x-3">
-                <div className="p-1.5 bg-[#00D4FF]/10 rounded-lg text-[#00D4FF] mt-0.5">
-                  <Lightbulb className="h-4 w-4" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-sm text-white">AI-Driven Idea Evaluation</h4>
-                  <p className="text-xs text-gray-400">Upload your PPT and receive automated grading in healthcare, renewable energy, and agricultural technology.</p>
-                </div>
-              </li>
             </ul>
           </div>
         </div>
@@ -213,7 +202,7 @@ export default function LandingPage() {
                 </div>
                 <div className="flex justify-between">
                   <span>Questions:</span>
-                  <span className="text-white font-semibold">75 Random (75 mins)</span>
+                  <span className="text-white font-semibold">50 Random (70 mins)</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Access Mode:</span>
@@ -224,44 +213,6 @@ export default function LandingPage() {
             <div className="pt-6">
               <Link
                 href="/electroquest"
-                className="block text-center w-full py-3 bg-[#00D4FF]/10 text-[#00FFFF] hover:bg-[#00D4FF] hover:text-[#081B33] border border-[#00FFFF]/30 font-extrabold text-sm rounded-xl transition-all cursor-pointer"
-              >
-                Enter Contest / Register
-              </Link>
-            </div>
-          </div>
-
-          {/* EVENT 2 CARD */}
-          <div className="rounded-2xl border border-[#00D4FF]/20 bg-[#081B33]/40 p-6 md:p-8 flex flex-col justify-between backdrop-blur-sm relative overflow-hidden group hover:border-[#00FFFF]/45 transition-all">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <Lightbulb className="h-10 w-10 text-[#00FFFF] filter drop-shadow-[0_0_8px_#00FFFF]" />
-                <span className="text-[10px] font-bold text-gray-400 border border-gray-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">
-                  Idea Presentation
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-white tracking-wide">THINK BIG</h3>
-              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                Submit innovative hardware models or software systems. Evaluation domains: Healthcare Tech, Renewable Energy, AgriTech, and Artificial Intelligence (AI). Automated slide assessment logs.
-              </p>
-              <div className="space-y-2 pt-2 border-t border-white/5 text-xs text-gray-400">
-                <div className="flex justify-between">
-                  <span>Team Size:</span>
-                  <span className="text-white font-semibold">2 - 4 Members</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>File Limits:</span>
-                  <span className="text-white font-semibold">PPT / PPTX / PDF (50MB)</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Evaluation:</span>
-                  <span className="text-white font-semibold">AI Grading (70) + Admin Panel (30)</span>
-                </div>
-              </div>
-            </div>
-            <div className="pt-6">
-              <Link
-                href="/thinkbig"
                 className="block text-center w-full py-3 bg-[#00D4FF]/10 text-[#00FFFF] hover:bg-[#00D4FF] hover:text-[#081B33] border border-[#00FFFF]/30 font-extrabold text-sm rounded-xl transition-all cursor-pointer"
               >
                 Enter Contest / Register

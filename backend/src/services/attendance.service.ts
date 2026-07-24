@@ -10,7 +10,7 @@ if (!fs.existsSync(TEMP_DIR)) {
 }
 
 // Generate Attendance PDF
-export const generateAttendancePDF = async (event: 'ELECTROQUEST' | 'THINKBIG'): Promise<string> => {
+export const generateAttendancePDF = async (event: 'ELECTROQUEST'): Promise<string> => {
   return new Promise(async (resolve, reject) => {
     try {
       const doc = new PDFDocument({
@@ -77,40 +77,6 @@ export const generateAttendancePDF = async (event: 'ELECTROQUEST' | 'THINKBIG'):
               regNo: reg.member2RegisterNumber,
               name: reg.member2Name,
               dept: reg.member2Department,
-              teamName: reg.teamName,
-            });
-          }
-        });
-      } else {
-        const registrations = await prisma.thinkBigRegistration.findMany({
-          orderBy: { createdAt: 'asc' },
-        });
-        registrations.forEach((reg) => {
-          studentsList.push({
-            regNo: reg.member1RegisterNumber,
-            name: reg.member1Name,
-            dept: reg.member1Department,
-            teamName: reg.teamName,
-          });
-          studentsList.push({
-            regNo: reg.member2RegisterNumber,
-            name: reg.member2Name,
-            dept: reg.member2Department,
-            teamName: reg.teamName,
-          });
-          if (reg.member3RegisterNumber && reg.member3Name && reg.member3Department) {
-            studentsList.push({
-              regNo: reg.member3RegisterNumber,
-              name: reg.member3Name,
-              dept: reg.member3Department,
-              teamName: reg.teamName,
-            });
-          }
-          if (reg.member4RegisterNumber && reg.member4Name && reg.member4Department) {
-            studentsList.push({
-              regNo: reg.member4RegisterNumber,
-              name: reg.member4Name,
-              dept: reg.member4Department,
               teamName: reg.teamName,
             });
           }
@@ -199,7 +165,7 @@ export const generateAttendancePDF = async (event: 'ELECTROQUEST' | 'THINKBIG'):
 };
 
 // Generate Attendance Excel Sheet using ExcelJS
-export const generateAttendanceExcel = async (event: 'ELECTROQUEST' | 'THINKBIG'): Promise<string> => {
+export const generateAttendanceExcel = async (event: 'ELECTROQUEST'): Promise<string> => {
   const workbook = new ExcelJS.Workbook();
   const worksheet = workbook.addWorksheet(`${event} Attendance`);
 
@@ -270,40 +236,6 @@ export const generateAttendanceExcel = async (event: 'ELECTROQUEST' | 'THINKBIG'
           regNo: reg.member2RegisterNumber,
           name: reg.member2Name,
           dept: reg.member2Department,
-          teamName: reg.teamName,
-        });
-      }
-    });
-  } else {
-    const registrations = await prisma.thinkBigRegistration.findMany({
-      orderBy: { createdAt: 'asc' },
-    });
-    registrations.forEach((reg) => {
-      studentsList.push({
-        regNo: reg.member1RegisterNumber,
-        name: reg.member1Name,
-        dept: reg.member1Department,
-        teamName: reg.teamName,
-      });
-      studentsList.push({
-        regNo: reg.member2RegisterNumber,
-        name: reg.member2Name,
-        dept: reg.member2Department,
-        teamName: reg.teamName,
-      });
-      if (reg.member3RegisterNumber && reg.member3Name && reg.member3Department) {
-        studentsList.push({
-          regNo: reg.member3RegisterNumber,
-          name: reg.member3Name,
-          dept: reg.member3Department,
-          teamName: reg.teamName,
-        });
-      }
-      if (reg.member4RegisterNumber && reg.member4Name && reg.member4Department) {
-        studentsList.push({
-          regNo: reg.member4RegisterNumber,
-          name: reg.member4Name,
-          dept: reg.member4Department,
           teamName: reg.teamName,
         });
       }

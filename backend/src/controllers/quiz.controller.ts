@@ -51,13 +51,13 @@ export const getQuizQuestions = async (req: Request, res: Response): Promise<voi
     // Check time remaining
     const startTime = new Date(attempt.startedAt).getTime();
     const elapsedMinutes = (Date.now() - startTime) / (60 * 1000);
-    if (elapsedMinutes >= 75) {
+    if (elapsedMinutes >= 70) {
       // Auto-submit
       await prisma.quizAttempt.update({
         where: { registrationId },
         data: { status: 'COMPLETED', submittedAt: new Date() },
       });
-      res.status(403).json({ error: 'Quiz time (75 minutes) has expired.' });
+      res.status(403).json({ error: 'Quiz time (70 minutes) has expired.' });
       return;
     }
 
@@ -73,8 +73,8 @@ export const getQuizQuestions = async (req: Request, res: Response): Promise<voi
     const seed = getSeedFromString(candidateId);
     const shuffledQuestions = shuffleWithSeed(questions, seed);
 
-    // Limit to 75 questions
-    const finalQuestions = shuffledQuestions.slice(0, 75);
+    // Limit to 50 questions
+    const finalQuestions = shuffledQuestions.slice(0, 50);
 
     // 4. Map questions to hide correct answer and shuffle options
     const formattedQuestions = finalQuestions.map((q, idx) => {
@@ -97,7 +97,7 @@ export const getQuizQuestions = async (req: Request, res: Response): Promise<voi
     });
 
     res.status(200).json({
-      timeRemaining: Math.max(0, 75 - elapsedMinutes), // in minutes
+      timeRemaining: Math.max(0, 70 - elapsedMinutes), // in minutes
       questions: formattedQuestions,
     });
   } catch (error: any) {
@@ -128,7 +128,7 @@ export const submitQuiz = async (req: Request, res: Response): Promise<void> => 
 
     const endTime = new Date();
     const startTime = new Date(attempt.startedAt);
-    const timeTaken = Math.min(75, (endTime.getTime() - startTime.getTime()) / (60 * 1000));
+    const timeTaken = Math.min(70, (endTime.getTime() - startTime.getTime()) / (60 * 1000));
 
     // Calculate score
     const questions = await prisma.question.findMany({
@@ -145,7 +145,7 @@ export const submitQuiz = async (req: Request, res: Response): Promise<void> => 
       }
     });
 
-    const totalQuestionsAsked = Math.min(75, questions.length || 75);
+    const totalQuestionsAsked = Math.min(50, questions.length || 50);
     const percentage = parseFloat(((score / totalQuestionsAsked) * 100).toFixed(2));
 
     // Save attempt

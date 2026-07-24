@@ -61,7 +61,7 @@ export default function ElectroQuestPage() {
   
   // Quiz state
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [timeRemaining, setTimeRemaining] = useState(75); // in minutes
+  const [timeRemaining, setTimeRemaining] = useState(70); // in minutes
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({}); // questionId -> selectedLabel
   const [warningsCount, setWarningsCount] = useState(0);
@@ -875,7 +875,7 @@ export default function ElectroQuestPage() {
               <div className="bg-[#081B33] border border-[#00D4FF]/10 rounded-2xl p-4 grid grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <span className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Total Score</span>
-                  <p className="text-2xl font-bold text-white">{quizScore} / 75</p>
+                  <p className="text-2xl font-bold text-white">{quizScore} / 50</p>
                 </div>
                 <div className="space-y-1">
                   <span className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Percentage</span>

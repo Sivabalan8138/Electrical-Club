@@ -85,7 +85,7 @@ import { adminLogin, adminResetPassword, candidateLogin } from './controllers/au
 import { registerElectroQuest } from './controllers/register.controller';
 import { getQuizQuestions, submitQuiz, getLeaderboard } from './controllers/quiz.controller';
 import { logViolation, getProctoringReports } from './controllers/proctor.controller';
-import { registerThinkBig, uploadPPT, submitPresentationScore, getThinkBigRegistrations } from './controllers/thinkbig.controller';
+
 import { verifyCertificate } from './controllers/verification.controller';
 import { handleAIChat, getProjectRecommendations } from './controllers/ai.controller';
 import {
@@ -99,7 +99,6 @@ import {
   sendBulkEmail,
   handleSendTestCertificate,
   deleteElectroQuestRegistration,
-  deleteThinkBigRegistration,
   getSMTPSettings,
   updateSMTPSettings,
   getRegistrationStatus,
@@ -122,10 +121,6 @@ app.get('/api/quiz/leaderboard', getLeaderboard);
 // 3. Quiz Proctoring routes
 app.post('/api/quiz/proctor/violation', verifyToken, requireCandidate, logViolation);
 
-// 4. Think Big Event routes
-app.post('/api/thinkbig/register', registerThinkBig);
-app.post('/api/thinkbig/upload', upload.single('file'), uploadPPT);
-app.get('/api/thinkbig/registrations', getThinkBigRegistrations);
 
 // 5. Public Certificate verification route
 app.get('/api/verify/certificate/:certId', verifyCertificate);
@@ -138,7 +133,7 @@ app.post('/api/ai/project-recommendations', getProjectRecommendations);
 app.get('/api/admin/analytics', verifyToken, requireAdmin, getAnalytics);
 app.get('/api/admin/registrations/electroquest', verifyToken, requireAdmin, getElectroQuestRegistrations);
 app.get('/api/admin/proctor/reports', verifyToken, requireAdmin, getProctoringReports);
-app.post('/api/admin/thinkbig/score', verifyToken, requireAdmin, submitPresentationScore);
+
 app.get('/api/admin/attendance/pdf/:event', verifyToken, requireAdmin, exportAttendancePDFFile);
 app.get('/api/admin/attendance/excel/:event', verifyToken, requireAdmin, exportAttendanceExcelFile);
 app.post('/api/admin/announcement', verifyToken, requireAdmin, createAnnouncement);
@@ -147,7 +142,7 @@ app.post('/api/admin/bulk-email', verifyToken, requireAdmin, sendBulkEmail);
 app.post('/api/admin/test-certificate', verifyToken, requireAdmin, handleSendTestCertificate);
 app.post('/api/question-bank/upload', verifyToken, requireAdmin, upload.single('file'), uploadQuestionBank);
 app.delete('/api/admin/registrations/electroquest/:id', verifyToken, requireAdmin, deleteElectroQuestRegistration);
-app.delete('/api/admin/registrations/thinkbig/:id', verifyToken, requireAdmin, deleteThinkBigRegistration);
+
 app.get('/api/admin/smtp-settings', verifyToken, requireAdmin, getSMTPSettings);
 app.post('/api/admin/smtp-settings', verifyToken, requireAdmin, updateSMTPSettings);
 app.get('/api/registration-status', getRegistrationStatus);

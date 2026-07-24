@@ -121,7 +121,7 @@ export default function LeaderboardPage() {
                     <td className="p-4 font-bold text-white tracking-wide group-hover:text-[#00FFFF]">{entry.teamName}</td>
                     <td className="p-4 font-mono text-xs text-gray-400">{entry.candidateId}</td>
                     <td className="p-4 text-gray-300">{entry.department}</td>
-                    <td className="p-4 text-center font-bold text-white">{entry.score} / 75</td>
+                    <td className="p-4 text-center font-bold text-white">{entry.score} / 50</td>
                     <td className="p-4 text-center font-bold text-[#00FFFF]">{entry.percentage}%</td>
                     <td className="p-4 text-center font-mono text-xs text-gray-400">{entry.timeTaken} mins</td>
                   </tr>

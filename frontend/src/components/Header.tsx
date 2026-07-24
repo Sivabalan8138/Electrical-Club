@@ -12,7 +12,6 @@ export default function Header() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'ElectroQuest Quiz', path: '/electroquest' },
-    { name: 'Think Big Event', path: '/thinkbig' },
     { name: 'Leaderboard', path: '/leaderboard' },
   ];
 

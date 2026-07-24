@@ -9,19 +9,16 @@ const CLUB_FAQ = [
   },
   {
     keywords: ['electroquest', 'quiz', 'rules', 'mark', 'duration'],
-    answer: 'ElectroQuest is an online technical quiz. It consists of 75 randomized questions spanning electrical, electronics, aptitude, logical reasoning, current technology, and AI. The duration is 75 minutes, with 1 mark per question (no negative marks). Complete camera, microphone, and browser proctoring are active.',
+    answer: 'ElectroQuest is an online technical quiz. It consists of 50 randomized questions spanning electrical, electronics, aptitude, logical reasoning, current technology, and AI. The duration is 70 minutes, with 1 mark per question (no negative marks). Complete camera, microphone, and browser proctoring are active.',
   },
-  {
-    keywords: ['think big', 'idea', 'presentation', 'domain'],
-    answer: 'Think Big is an innovation and idea presentation competition. The domains are Healthcare Technology, Renewable Energy, Agriculture Technology, and Artificial Intelligence (AI). Teams of 2 to 4 members submit a PPT/PDF (max 50MB) which is evaluated by AI (70 marks) and an Admin panel (30 marks).',
-  },
+
   {
     keywords: ['proctor', 'camera', 'microphone', 'warning', 'tab'],
     answer: 'Our AI proctoring monitors camera input (detecting face count, looking away) and microphone levels (detecting voice and noise). It also blocks right-click, copy-paste, and tab switches. A 3rd warning will trigger an auto-submit of your quiz.',
   },
   {
     keywords: ['certificate', 'download', 'qr'],
-    answer: 'Certificates of participation are automatically generated and emailed to all registered team members upon completing the quiz (for ElectroQuest) or receiving admin approval (for Think Big). Each certificate contains a verification QR code.',
+    answer: 'Certificates of participation are automatically generated and emailed to all registered team members upon completing the quiz. Each certificate contains a verification QR code.',
   },
   {
     keywords: ['contact', 'college', 'where', 'phone', 'email'],
@@ -149,8 +146,7 @@ export const handleAIChat = async (req: Request, res: Response): Promise<void> =
         const openai = new OpenAI({ apiKey: openAiKey });
         const systemPrompt = `You are a helpful, enthusiastic AI Assistant representing the Electrical Club of the Department of Electrical and Electronics Engineering, V.S.B. Engineering College, Karur.
 You answer questions about the events:
-1. ElectroQuest (online technical quiz: 75 random questions, 75 mins, proctored).
-2. Think Big (Idea Presentation: Healthcare, Renewable, Agri, AI domains, teams of 2-4, PPT upload).
+1. ElectroQuest (online technical quiz: 50 random questions, 70 mins, proctored).
 Provide short, professional, and friendly answers. Include contact details if asked. Keep responses engaging and themed like modern electrical engineering.`;
 
         const response = await openai.chat.completions.create({
@@ -170,7 +166,7 @@ Provide short, professional, and friendly answers. Include contact details if as
 
     // Fallback logic
     const query = message.toLowerCase();
-    let bestMatch = 'Thank you for reaching out to the Electrical Club! I can help you with registrations, event rules for ElectroQuest and Think Big, and proctoring. Could you specify your question?';
+    let bestMatch = 'Thank you for reaching out to the Electrical Club! I can help you with registrations, event rules for ElectroQuest, and proctoring. Could you specify your question?';
 
     for (const faq of CLUB_FAQ) {
       const match = faq.keywords.some((kw) => query.includes(kw));

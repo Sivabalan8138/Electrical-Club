@@ -11,15 +11,13 @@ import { sendTestCertificate } from '../services/certificate.service';
 export const getAnalytics = async (req: Request, res: Response): Promise<void> => {
   try {
     const totalEQ = await prisma.electroQuestRegistration.count();
-    const totalTB = await prisma.thinkBigRegistration.count();
 
     const quizAttempts = await prisma.quizAttempt.findMany();
     const quizCompleted = quizAttempts.filter((a) => a.status === 'COMPLETED');
     const quizDisqualified = quizAttempts.filter((a) => a.status === 'DISQUALIFIED');
 
     const totalCertificates = 
-      await prisma.quizAttempt.count({ where: { isCertSent: true } }) +
-      await prisma.thinkBigRegistration.count({ where: { isCertSent: true } });
+      await prisma.quizAttempt.count({ where: { isCertSent: true } });
 
     // Calculate highest and average scores
     let highestScore = 0;
@@ -30,19 +28,6 @@ export const getAnalytics = async (req: Request, res: Response): Promise<void> =
       avgScore = parseFloat((sum / quizCompleted.length).toFixed(2));
     }
 
-    // Domain-wise stats for Think Big
-    const tbRegistrations = await prisma.thinkBigRegistration.findMany();
-    const domainStats: Record<string, number> = {
-      'Healthcare Technology': 0,
-      'Renewable Energy': 0,
-      'Agriculture Technology': 0,
-      'Artificial Intelligence (AI)': 0,
-    };
-    tbRegistrations.forEach((r) => {
-      if (domainStats[r.domain] !== undefined) {
-        domainStats[r.domain]++;
-      }
-    });
 
     // Department-wise stats for ElectroQuest
     const eqRegistrations = await prisma.electroQuestRegistration.findMany();
@@ -68,15 +53,15 @@ export const getAnalytics = async (req: Request, res: Response): Promise<void> =
     });
 
     res.status(200).json({
-      totalRegistrations: totalEQ + totalTB,
-      eventWise: { electroQuest: totalEQ, thinkBig: totalTB },
+      totalRegistrations: totalEQ,
+      eventWise: { electroQuest: totalEQ },
       quizStats: {
         completed: quizCompleted.length,
         disqualified: quizDisqualified.length,
         averageScore: avgScore,
         highestScore,
       },
-      domainStats,
+
       deptStats,
       yearStats,
       certificateCount: totalCertificates,
@@ -208,9 +193,9 @@ export const getElectroQuestRegistrations = async (req: Request, res: Response):
 
 // Export Attendance PDF
 export const exportAttendancePDFFile = async (req: Request, res: Response): Promise<void> => {
-  const { event } = req.params; // "ELECTROQUEST" or "THINKBIG"
+  const { event } = req.params; // "ELECTROQUEST"
   try {
-    if (event !== 'ELECTROQUEST' && event !== 'THINKBIG') {
+    if (event !== 'ELECTROQUEST') {
       res.status(400).json({ error: 'Invalid event type' });
       return;
     }
@@ -223,9 +208,9 @@ export const exportAttendancePDFFile = async (req: Request, res: Response): Prom
 
 // Export Attendance Excel
 export const exportAttendanceExcelFile = async (req: Request, res: Response): Promise<void> => {
-  const { event } = req.params; // "ELECTROQUEST" or "THINKBIG"
+  const { event } = req.params; // "ELECTROQUEST"
   try {
-    if (event !== 'ELECTROQUEST' && event !== 'THINKBIG') {
+    if (event !== 'ELECTROQUEST') {
       res.status(400).json({ error: 'Invalid event type' });
       return;
     }
@@ -281,16 +266,6 @@ export const sendBulkEmail = async (req: Request, res: Response): Promise<void> 
       eq.forEach((r) => {
         emails.push(r.member1Email);
         if (r.member2Email) emails.push(r.member2Email);
-      });
-    }
-
-    if (targetEvent === 'THINKBIG' || targetEvent === 'ALL') {
-      const tb = await prisma.thinkBigRegistration.findMany();
-      tb.forEach((r) => {
-        emails.push(r.member1Email);
-        emails.push(r.member2Email);
-        if (r.member3Email) emails.push(r.member3Email);
-        if (r.member4Email) emails.push(r.member4Email);
       });
     }
 
@@ -375,25 +350,6 @@ export const deleteElectroQuestRegistration = async (req: Request, res: Response
   }
 };
 
-// Delete Think Big Registration
-export const deleteThinkBigRegistration = async (req: Request, res: Response): Promise<void> => {
-  const { id } = req.params;
-  try {
-    const existing = await prisma.thinkBigRegistration.findUnique({
-      where: { id },
-    });
-    if (!existing) {
-      res.status(404).json({ error: 'Registration not found' });
-      return;
-    }
-    await prisma.thinkBigRegistration.delete({
-      where: { id },
-    });
-    res.status(200).json({ message: 'Registration deleted successfully' });
-  } catch (error: any) {
-    res.status(500).json({ error: error.message || 'Failed to delete registration' });
-  }
-};
 
 // Get SMTP settings
 export const getSMTPSettings = async (req: Request, res: Response): Promise<void> => {
@@ -510,9 +466,8 @@ export const updateSMTPSettings = async (req: Request, res: Response): Promise<v
 export const getRegistrationStatus = async (req: Request, res: Response): Promise<void> => {
   try {
     const electroQuest = process.env.REGISTRATION_ELECTROQUEST || 'OPEN';
-    const thinkBig = process.env.REGISTRATION_THINKBIG || 'OPEN';
     const quizLogin = process.env.QUIZ_LOGIN_STATUS || 'OPEN';
-    res.status(200).json({ electroQuest, thinkBig, quizLogin });
+    res.status(200).json({ electroQuest, quizLogin });
   } catch (error: any) {
     res.status(500).json({ error: error.message || 'Failed to fetch registration status' });
   }
@@ -520,15 +475,14 @@ export const getRegistrationStatus = async (req: Request, res: Response): Promis
 
 // Update Registration Status (Admin)
 export const updateRegistrationStatus = async (req: Request, res: Response): Promise<void> => {
-  const { electroQuest, thinkBig, quizLogin } = req.body;
+  const { electroQuest, quizLogin } = req.body;
   try {
-    if (!electroQuest || !thinkBig) {
-      res.status(400).json({ error: 'electroQuest and thinkBig status are required' });
+    if (!electroQuest) {
+      res.status(400).json({ error: 'electroQuest status is required' });
       return;
     }
 
     process.env.REGISTRATION_ELECTROQUEST = electroQuest;
-    process.env.REGISTRATION_THINKBIG = thinkBig;
     
     if (quizLogin) {
       process.env.QUIZ_LOGIN_STATUS = quizLogin;
@@ -542,8 +496,7 @@ export const updateRegistrationStatus = async (req: Request, res: Response): Pro
     }
 
     const variables: Record<string, string> = {
-      REGISTRATION_ELECTROQUEST: electroQuest,
-      REGISTRATION_THINKBIG: thinkBig
+      REGISTRATION_ELECTROQUEST: electroQuest
     };
     if (quizLogin) {
       variables['QUIZ_LOGIN_STATUS'] = quizLogin;

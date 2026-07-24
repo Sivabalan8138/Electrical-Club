@@ -76,41 +76,6 @@ model ProctoringViolation {
   detail        String
 }
 
-model ThinkBigRegistration {
-  id                     String   @id @default(uuid())
-  teamName               String
-  domain                 String   // "Healthcare Technology", "Renewable Energy", "Agriculture Technology", "Artificial Intelligence (AI)"
-  member1Name            String
-  member1RegisterNumber  String
-  member1Department      String
-  member1Email           String
-  member1MobileNumber    String
-  member2Name            String
-  member2RegisterNumber  String
-  member2Department      String
-  member2Email           String
-  member2MobileNumber    String
-  member3Name            String?
-  member3RegisterNumber  String?
-  member3Department      String?
-  member3Email           String?
-  member3MobileNumber    String?
-  member4Name            String?
-  member4RegisterNumber  String?
-  member4Department      String?
-  member4Email           String?
-  member4MobileNumber    String?
-  pptUrl                 String?  // Cloudinary URL
-  pptName                String?
-  aiScore                Float?   // Out of 70
-  aiFeedback             String?  // JSON or text structure containing Strengths, Weaknesses, Suggestions
-  presentationScore      Float?   // Out of 30 (Entered by Admin)
-  finalScore             Float?   // Out of 100
-  approvalStatus         String   @default("PENDING") // "PENDING", "APPROVED", "REJECTED"
-  certificateId          String?  @unique
-  isCertSent             Boolean  @default(false)
-  createdAt              DateTime @default(now())
-}
 
 model Announcement {
   id        String   @id @default(uuid())

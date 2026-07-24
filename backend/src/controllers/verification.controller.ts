@@ -33,30 +33,6 @@ export const verifyCertificate = async (req: Request, res: Response): Promise<vo
       return;
     }
 
-    // 2. Search in Think Big
-    const tbReg = await prisma.thinkBigRegistration.findFirst({
-      where: { certificateId: certId, isCertSent: true },
-    });
-
-    if (tbReg) {
-      const teamMembersList = [
-        tbReg.member1Name,
-        tbReg.member2Name,
-        tbReg.member3Name,
-        tbReg.member4Name,
-      ].filter(Boolean);
-
-      res.status(200).json({
-        valid: true,
-        participantName: teamMembersList.join(', '),
-        eventName: `Think Big Idea Presentation (${tbReg.domain})`,
-        certificateNumber: certId,
-        verificationStatus: 'Verified & Authentic',
-        eventDate: new Date(tbReg.createdAt).toLocaleDateString(),
-        details: `Team Name: ${tbReg.teamName} | Final Score: ${tbReg.finalScore}/100`,
-      });
-      return;
-    }
 
     res.status(404).json({
       valid: false,
