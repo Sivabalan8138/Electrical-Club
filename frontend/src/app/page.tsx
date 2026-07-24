@@ -40,7 +40,7 @@ export default function LandingPage() {
   return (
     <div className="space-y-24 pb-24 overflow-x-hidden">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-4 md:px-8 mt-8">
+      <section className="relative min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center text-center px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
