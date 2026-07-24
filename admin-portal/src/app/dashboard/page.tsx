@@ -34,6 +34,7 @@ interface EQRegistration {
   member1RegisterNumber: string;
   member1Department: string;
   member1Email: string;
+  isEmailSent: boolean;
   quizAttempt?: {
     score: number;
     percentage: number;
@@ -420,6 +421,26 @@ export default function AdminDashboard() {
     }
   };
 
+  const resendRegistrationEmail = async (id: string, event: 'electroquest') => {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/admin/registrations/${event}/${id}/resend-email`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (res.ok) {
+        alert('Email successfully resent!');
+        fetchRegistrations(); // Refresh to show isEmailSent status
+      } else {
+        const data = await res.json();
+        alert(`Failed: ${data.error || 'SMTP Error. Ensure Google App Password is used in Settings.'}`);
+      }
+    } catch (err) {
+      alert('Network error. Failed to resend email.');
+    }
+  };
+
+
   const fetchProctorLogs = async () => {
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/admin/proctor/reports`, {
@@ -692,7 +713,14 @@ export default function AdminDashboard() {
                           <td className="p-3 font-bold text-white">{reg.teamName}</td>
                           <td className="p-3 font-mono text-gray-400">{reg.candidateId}</td>
                           <td className="p-3 text-gray-300">
-                            {reg.member1Name} ({reg.member1Department}) - {reg.member1Email}
+                            <div>{reg.member1Name} ({reg.member1Department}) - {reg.member1Email}</div>
+                            <div className="mt-1">
+                              {reg.isEmailSent ? (
+                                <span className="inline-flex items-center space-x-1 text-[10px] text-green-400 font-bold bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20"><Mail className="h-3 w-3" /> <span>Sent</span></span>
+                              ) : (
+                                <span className="inline-flex items-center space-x-1 text-[10px] text-red-400 font-bold bg-red-500/10 px-2 py-0.5 rounded border border-red-500/20"><Mail className="h-3 w-3" /> <span>Failed</span></span>
+                              )}
+                            </div>
                           </td>
                           <td className="p-3 text-center font-bold text-white">
                             {reg.quizAttempt ? `${reg.quizAttempt.score}/50` : 'N/A'}
@@ -706,7 +734,14 @@ export default function AdminDashboard() {
                               {reg.quizAttempt?.status || 'NOT STARTED'}
                             </span>
                           </td>
-                          <td className="p-3 text-center">
+                          <td className="p-3 text-center space-x-2 flex justify-center items-center">
+                            <button
+                              onClick={() => resendRegistrationEmail(reg.id, 'electroquest')}
+                              className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 px-2.5 py-1 rounded transition-all cursor-pointer font-semibold flex items-center space-x-1"
+                              title="Resend Candidate ID Email"
+                            >
+                              <RefreshCw className="h-3 w-3" /> <span>Resend</span>
+                            </button>
                             <button
                               onClick={() => deleteRegistration(reg.id, 'electroquest')}
                               className="text-red-400 hover:text-red-300 hover:bg-red-500/10 px-2.5 py-1 rounded transition-all cursor-pointer font-semibold"
@@ -1054,6 +1089,14 @@ export default function AdminDashboard() {
               <p className="text-gray-300 text-xs leading-relaxed">
                 Connect your real SMTP host (e.g. Gmail) to automatically email registration details and completion certificates to participants.
               </p>
+              <div className="bg-red-500/10 border border-red-500/20 rounded p-3 mt-2 mb-2">
+                <p className="text-red-400 text-[11px] font-bold">⚠️ IMPORTANT FOR GMAIL USERS</p>
+                <p className="text-gray-400 text-[10px] mt-1">
+                  You MUST use a <strong>Google App Password</strong> instead of your standard Gmail password. 
+                  Go to your Google Account Security settings, enable 2-Step Verification, and generate an App Password. 
+                  If you use your standard password, background emails will silently fail!
+                </p>
+              </div>
 
               <form onSubmit={handleSmtpSubmit} className="space-y-3">
                 <div className="grid grid-cols-2 gap-2">

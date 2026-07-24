@@ -107,6 +107,7 @@ import {
   uploadCertificateTemplate,
   getCertSettings,
   updateCertSettings,
+  resendRegistrationEmail,
 } from './controllers/admin.controller';
 
 // --- ROUTING SYSTEM ---
@@ -150,6 +151,7 @@ app.post('/api/admin/certificate-settings', verifyToken, requireAdmin, updateCer
 app.post('/api/question-bank/upload', verifyToken, requireAdmin, upload.single('file'), uploadQuestionBank);
 app.post('/api/admin/certificate-template', verifyToken, requireAdmin, upload.single('template'), uploadCertificateTemplate);
 app.delete('/api/admin/registrations/electroquest/:id', verifyToken, requireAdmin, deleteElectroQuestRegistration);
+app.post('/api/admin/registrations/:event/:id/resend-email', verifyToken, requireAdmin, resendRegistrationEmail);
 
 app.get('/api/admin/smtp-settings', verifyToken, requireAdmin, getSMTPSettings);
 app.post('/api/admin/smtp-settings', verifyToken, requireAdmin, updateSMTPSettings);

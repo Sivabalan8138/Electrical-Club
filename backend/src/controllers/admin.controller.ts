@@ -572,3 +572,96 @@ export const updateCertSettings = async (req: Request, res: Response): Promise<v
     res.status(500).json({ error: 'Failed to update certificate settings' });
   }
 };
+
+// Resend Candidate ID Email
+export const resendRegistrationEmail = async (req: Request, res: Response): Promise<void> => {
+  const { event, id } = req.params;
+
+  if (event !== 'electroquest') {
+    res.status(400).json({ error: 'Only electroquest event is supported for email resend.' });
+    return;
+  }
+
+  try {
+    const registration = await prisma.electroQuestRegistration.findUnique({
+      where: { id },
+    });
+
+    if (!registration) {
+      res.status(404).json({ error: 'Registration not found' });
+      return;
+    }
+
+    const emails = [registration.member1Email];
+    if (registration.member2Email) {
+      emails.push(registration.member2Email);
+    }
+
+    const host = process.env.SMTP_HOST || 'smtp.mailtrap.io';
+    const port = parseInt(process.env.SMTP_PORT || '465', 10);
+    const user = process.env.SMTP_USER || '';
+    const pass = process.env.SMTP_PASS || '';
+    const from = process.env.SMTP_FROM || 'electricalclubvsb@gmail.com';
+
+    if (!user || user === 'mock-user') {
+      res.status(400).json({ error: 'SMTP is not configured on this server instance. Please configure real SMTP credentials to resend emails.' });
+      return;
+    }
+
+    const transporter = nodemailer.createTransport({
+      host,
+      port,
+      secure: port === 465,
+      auth: { user, pass },
+      connectionTimeout: 10000,
+      tls: { rejectUnauthorized: false }
+    });
+
+    try {
+      await transporter.verify();
+    } catch (verifyErr: any) {
+      res.status(400).json({ error: `SMTP Configuration failed: ${verifyErr.message}. Ensure you are using a Google App Password, not your standard Gmail password.` });
+      return;
+    }
+
+    const mailOptions = {
+      from,
+      to: emails.join(', '),
+      subject: `ElectroQuest Quiz Registration - Candidate ID: ${registration.candidateId}`,
+      text: `Dear Participants,\n\nYour registration for the ElectroQuest Technical Quiz organized by the Electrical Club, EEE Department, V.S.B. Engineering College, Karur, has been successfully processed.\n\nHere are your login credentials:\n\nTeam Name: ${registration.teamName}\nCandidate ID: ${registration.candidateId}\n\nYou can use this Candidate ID to log in and take the quiz on the portal. Good luck!\n\nBest Regards,\nElectrical Club Organizing Committee`,
+      html: `
+        <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
+          <h2 style="color: #081B33;">ElectroQuest Registration Confirmed!</h2>
+          <p>Dear Participants,</p>
+          <p>Your registration for the <strong>ElectroQuest Technical Quiz</strong> has been successfully processed.</p>
+          <p>Here are your access credentials for the competition:</p>
+          <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+            <tr>
+              <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; background: #f9f9f9; width: 150px;">Team Name</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">${registration.teamName}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; background: #f9f9f9;">Candidate ID</td>
+              <td style="padding: 8px; border: 1px solid #ddd; color: #00D4FF; font-weight: bold; font-size: 16px;">${registration.candidateId}</td>
+            </tr>
+          </table>
+          <p style="color: #666; font-size: 13px;"><em>Note: Keep this Candidate ID secure. It is required to log in and begin the proctored quiz.</em></p>
+          <br/>
+          <p>Best Regards,</p>
+          <p><strong>Electrical Club</strong><br/>Department of Electrical and Electronics Engineering<br/>V.S.B. Engineering College, Karur</p>
+        </div>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    await prisma.electroQuestRegistration.update({
+      where: { id: registration.id },
+      data: { isEmailSent: true },
+    });
+
+    res.status(200).json({ message: 'Email successfully resent!' });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || 'Failed to resend email' });
+  }
+};
