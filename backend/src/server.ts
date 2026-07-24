@@ -94,6 +94,7 @@ import {
   getElectroQuestRegistrations,
   exportAttendancePDFFile,
   exportAttendanceExcelFile,
+  exportAttendanceWordFile,
   createAnnouncement,
   getAnnouncements,
   sendBulkEmail,
@@ -103,6 +104,9 @@ import {
   updateSMTPSettings,
   getRegistrationStatus,
   updateRegistrationStatus,
+  uploadCertificateTemplate,
+  getCertSettings,
+  updateCertSettings,
 } from './controllers/admin.controller';
 
 // --- ROUTING SYSTEM ---
@@ -136,11 +140,15 @@ app.get('/api/admin/proctor/reports', verifyToken, requireAdmin, getProctoringRe
 
 app.get('/api/admin/attendance/pdf/:event', verifyToken, requireAdmin, exportAttendancePDFFile);
 app.get('/api/admin/attendance/excel/:event', verifyToken, requireAdmin, exportAttendanceExcelFile);
+app.get('/api/admin/attendance/word/:event', verifyToken, requireAdmin, exportAttendanceWordFile);
 app.post('/api/admin/announcement', verifyToken, requireAdmin, createAnnouncement);
 app.get('/api/admin/announcements', getAnnouncements); // Public for Landing Page Announcements
 app.post('/api/admin/bulk-email', verifyToken, requireAdmin, sendBulkEmail);
 app.post('/api/admin/test-certificate', verifyToken, requireAdmin, handleSendTestCertificate);
+app.get('/api/admin/certificate-settings', verifyToken, requireAdmin, getCertSettings);
+app.post('/api/admin/certificate-settings', verifyToken, requireAdmin, updateCertSettings);
 app.post('/api/question-bank/upload', verifyToken, requireAdmin, upload.single('file'), uploadQuestionBank);
+app.post('/api/admin/certificate-template', verifyToken, requireAdmin, upload.single('template'), uploadCertificateTemplate);
 app.delete('/api/admin/registrations/electroquest/:id', verifyToken, requireAdmin, deleteElectroQuestRegistration);
 
 app.get('/api/admin/smtp-settings', verifyToken, requireAdmin, getSMTPSettings);

@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import PDFDocument from 'pdfkit';
 import ExcelJS from 'exceljs';
+import { Document, Packer, Paragraph, Table, TableRow, TableCell, WidthType, TextRun, HeadingLevel, AlignmentType, BorderStyle, ShadingType } from 'docx';
 import prisma from '../utils/db';
 
 const TEMP_DIR = path.join(__dirname, '../../temp_reports');
@@ -281,4 +282,101 @@ export const generateAttendanceExcel = async (event: 'ELECTROQUEST'): Promise<st
   const excelPath = path.join(TEMP_DIR, `${event}_Attendance_Sheet.xlsx`);
   await workbook.xlsx.writeFile(excelPath);
   return excelPath;
+};
+
+// Generate Attendance Word Document using docx
+export const generateAttendanceWord = async (event: 'ELECTROQUEST'): Promise<string> => {
+  let studentsList: Array<{ regNo: string; name: string; dept: string; teamName: string; }> = [];
+
+  if (event === 'ELECTROQUEST') {
+    const registrations = await prisma.electroQuestRegistration.findMany({
+      orderBy: { createdAt: 'asc' },
+    });
+    registrations.forEach((reg) => {
+      studentsList.push({
+        regNo: reg.member1RegisterNumber,
+        name: reg.member1Name,
+        dept: reg.member1Department,
+        teamName: reg.teamName,
+      });
+      if (reg.member2RegisterNumber && reg.member2Name && reg.member2Department) {
+        studentsList.push({
+          regNo: reg.member2RegisterNumber,
+          name: reg.member2Name,
+          dept: reg.member2Department,
+          teamName: reg.teamName,
+        });
+      }
+    });
+  }
+
+  const tableRows = [
+    new TableRow({
+      children: [
+        'S.No', 'Register Number', 'Student Name', 'Department', 'Team Name', 'Student Signature'
+      ].map(text => new TableCell({
+        children: [new Paragraph({ children: [new TextRun({ text, bold: true, color: "FFFFFF" })], alignment: AlignmentType.CENTER })],
+        shading: { fill: "081B33", type: ShadingType.CLEAR, color: "auto" },
+      })),
+    }),
+  ];
+
+  studentsList.forEach((s, idx) => {
+    tableRows.push(
+      new TableRow({
+        children: [
+          new TableCell({ children: [new Paragraph({ children: [new TextRun(String(idx + 1))] })] }),
+          new TableCell({ children: [new Paragraph({ children: [new TextRun(s.regNo)] })] }),
+          new TableCell({ children: [new Paragraph({ children: [new TextRun(s.name)] })] }),
+          new TableCell({ children: [new Paragraph({ children: [new TextRun(s.dept)] })] }),
+          new TableCell({ children: [new Paragraph({ children: [new TextRun(s.teamName)] })] }),
+          new TableCell({ children: [new Paragraph({ children: [new TextRun("")] })] }),
+        ],
+      })
+    );
+  });
+
+  const doc = new Document({
+    sections: [
+      {
+        properties: {},
+        children: [
+          new Paragraph({
+            children: [new TextRun({ text: "V.S.B. ENGINEERING COLLEGE, KARUR", bold: true, size: 28 })],
+            alignment: AlignmentType.CENTER,
+          }),
+          new Paragraph({
+            children: [new TextRun({ text: "DEPARTMENT OF ELECTRICAL AND ELECTRONICS ENGINEERING", size: 20, color: "555555" })],
+            alignment: AlignmentType.CENTER,
+          }),
+          new Paragraph({
+            children: [new TextRun({ text: "ELECTRICAL CLUB", bold: true, size: 24, color: "00D4FF" })],
+            alignment: AlignmentType.CENTER,
+          }),
+          new Paragraph({
+            children: [new TextRun({ text: `EVENT ATTENDANCE SHEET - ${event.toUpperCase()}`, bold: true, size: 24 })],
+            alignment: AlignmentType.CENTER,
+          }),
+          new Paragraph({ text: "" }),
+          new Table({
+            rows: tableRows,
+            width: { size: 100, type: WidthType.PERCENTAGE },
+          }),
+          new Paragraph({ text: "" }),
+          new Paragraph({ text: "" }),
+          new Paragraph({ text: "" }),
+          new Paragraph({
+            children: [
+              new TextRun({ text: "Faculty Coordinator Signature\t\t\t\t\t\tStudent Coordinator Signature", bold: true }),
+            ],
+          }),
+        ],
+      },
+    ],
+  });
+
+  const wordPath = path.join(TEMP_DIR, `${event}_Attendance_Sheet.docx`);
+  const buffer = await Packer.toBuffer(doc);
+  fs.writeFileSync(wordPath, buffer);
+  return wordPath;
 };

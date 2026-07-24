@@ -28,7 +28,7 @@ export const verifyCertificate = async (req: Request, res: Response): Promise<vo
         certificateNumber: certId,
         verificationStatus: 'Verified & Authentic',
         eventDate: eqAttempt.submittedAt ? new Date(eqAttempt.submittedAt).toLocaleDateString() : 'N/A',
-        details: `Score: ${eqAttempt.score}/75 | Percentage: ${eqAttempt.percentage}%`,
+        details: `Score: ${eqAttempt.score}/50 | Percentage: ${eqAttempt.percentage}%`,
       });
       return;
     }

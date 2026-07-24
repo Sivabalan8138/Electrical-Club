@@ -1,0 +1,3602 @@
+[
+  {
+    "id": 1,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the difference between a conductor and a semiconductor?",
+    "type": "open-ended"
+  },
+  {
+    "id": 2,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the purpose of Semiconductor?",
+    "type": "open-ended"
+  },
+  {
+    "id": 3,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Different semiconductor materials",
+    "type": "open-ended"
+  },
+  {
+    "id": 4,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Different Wafer types?",
+    "type": "open-ended"
+  },
+  {
+    "id": 5,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the Resistor and why do we need it? How can you realize a Resistor in a semiconductor?",
+    "type": "open-ended"
+  },
+  {
+    "id": 6,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "How you can realize a capacitor in a semiconductor?",
+    "type": "open-ended"
+  },
+  {
+    "id": 7,
+    "category": "Datasheet Parameters",
+    "questionText": "What critical information is available in a datasheet?",
+    "type": "open-ended"
+  },
+  {
+    "id": 8,
+    "category": "Datasheet Parameters",
+    "questionText": "What is the electrical spec table listed in the datasheet?",
+    "type": "open-ended"
+  },
+  {
+    "id": 9,
+    "category": "Datasheet Parameters",
+    "questionText": "Which values in the datasheet are tested against the device parameters?",
+    "type": "open-ended"
+  },
+  {
+    "id": 10,
+    "category": "Datasheet Parameters",
+    "questionText": "Why are the Min/Type/Max values given in the Datasheet?",
+    "type": "open-ended"
+  },
+  {
+    "id": 11,
+    "category": "Datasheet Parameters",
+    "questionText": "What is Tj in the datasheet? What is the difference between operating and ambient temperature?",
+    "type": "open-ended"
+  },
+  {
+    "id": 12,
+    "category": "Datasheet Parameters",
+    "questionText": "What is the meaning of the statement Guaranteed by design in a datasheet? Why is it needed?",
+    "type": "open-ended"
+  },
+  {
+    "id": 13,
+    "category": "Datasheet Parameters",
+    "questionText": "Why are Absolute Maximum Ratings specified in a datasheet?",
+    "type": "open-ended"
+  },
+  {
+    "id": 14,
+    "category": "Datasheet Parameters",
+    "questionText": "What are the main parameters to look for in a datasheet for a digital IC?",
+    "type": "open-ended"
+  },
+  {
+    "id": 15,
+    "category": "Datasheet Parameters",
+    "questionText": "What mechanical information is available in the datasheet?",
+    "type": "open-ended"
+  },
+  {
+    "id": 16,
+    "category": "Generic Details about IC",
+    "questionText": "What is an integrated circuit? What are it’s advantages?",
+    "type": "open-ended"
+  },
+  {
+    "id": 17,
+    "category": "Generic Details about IC",
+    "questionText": "How are ICs classified?",
+    "type": "open-ended"
+  },
+  {
+    "id": 18,
+    "category": "Generic Details about IC",
+    "questionText": "Name 5 or more of different IC packages?",
+    "type": "open-ended"
+  },
+  {
+    "id": 19,
+    "category": "Generic Details about IC",
+    "questionText": "What additional information is present in Package drawing?",
+    "type": "open-ended"
+  },
+  {
+    "id": 20,
+    "category": "Generic Details about IC",
+    "questionText": "Draw one or two circuits which deal with both digital and analog?",
+    "type": "open-ended"
+  },
+  {
+    "id": 21,
+    "category": "Generic Details about IC",
+    "questionText": "How many different grades of IC are available?",
+    "type": "open-ended"
+  },
+  {
+    "id": 22,
+    "category": "Generic Details about IC",
+    "questionText": "How to identify the grades of IC?",
+    "type": "open-ended"
+  },
+  {
+    "id": 23,
+    "category": "Generic Details about IC",
+    "questionText": "What is SOC? Give an example?",
+    "type": "open-ended"
+  },
+  {
+    "id": 24,
+    "category": "Concept of Source and Load",
+    "questionText": "How does Constant Voltage Source work?",
+    "type": "open-ended"
+  },
+  {
+    "id": 25,
+    "category": "Concept of Source and Load",
+    "questionText": "How does Constant Current Source work?",
+    "type": "open-ended"
+  },
+  {
+    "id": 26,
+    "category": "Concept of Source and Load",
+    "questionText": "What are the different types of loads? Describe the nature of loads.",
+    "type": "open-ended"
+  },
+  {
+    "id": 27,
+    "category": "Concept of Source and Load",
+    "questionText": "If 5 bulbs in a room with a rating of 10V, 1A has to be connected to a supply, what should be the minimum rating of the supply?",
+    "type": "open-ended"
+  },
+  {
+    "id": 28,
+    "category": "Concept of Source and Load",
+    "questionText": "Under the following conditions, what will be the max current drawn from the source if:",
+    "type": "open-ended"
+  },
+  {
+    "id": 29,
+    "category": "Concept of Source and Load",
+    "questionText": "Bulb 1 is labeled as 60W, 120V and bulb 2 is labeled as 120W, 120V. Which one would be brighter when: a. Connected in series b. Connected in parallel",
+    "type": "open-ended"
+  },
+  {
+    "id": 30,
+    "category": "Concept of Source and Load",
+    "questionText": "A power supply can deliver a maximum rated current of 0.5A at a full-load output voltage of 20V. What is the maximum load that you can connect across the supply?",
+    "type": "open-ended"
+  },
+  {
+    "id": 31,
+    "category": "Concept of Source and Load",
+    "questionText": "In the following circuit, if R=100Ω and Vs=10V, 1A, a. What is the voltage at Vo? b. What is the current through R? c. Is the circuit open or closed-loop circuit?",
+    "type": "open-ended"
+  },
+  {
+    "id": 32,
+    "category": "Concept of Source and Load",
+    "questionText": "When 5 DC sources with rating of 3V, 1A each are connected in series and in parallel. What will be the effective Voltage and current that can be delivered?",
+    "type": "open-ended"
+  },
+  {
+    "id": 33,
+    "category": "Concept of Source and Load",
+    "questionText": "Calculate the maximum safe current that can pass through a 1.8 KΩ resistor rated at 0.5W.",
+    "type": "open-ended"
+  },
+  {
+    "id": 34,
+    "category": "Concept of Source and Load",
+    "questionText": "A source whose no-load voltage is 220 V delivers 20 watts to a load when the current is 0.4 A. Calculate the internal resistance of the source.",
+    "type": "open-ended"
+  },
+  {
+    "id": 35,
+    "category": "Concept of Source and Load",
+    "questionText": "Obtain the source current I and the total power delivered by the current source to the circuit.",
+    "type": "open-ended"
+  },
+  {
+    "id": 36,
+    "category": "Basics of Resistor",
+    "questionText": "What is Resistance?",
+    "type": "open-ended"
+  },
+  {
+    "id": 37,
+    "category": "Basics of Resistor",
+    "questionText": "Write the specifications listed in a Resistor Datasheet.",
+    "type": "open-ended"
+  },
+  {
+    "id": 38,
+    "category": "Basics of Resistor",
+    "questionText": "Assume that Vin source is 5 volt, 17mA, and our objective is to provide 3.3 volt, 10mA (Vout) to a digital circuit. Suggest proper values for R1 and R2.",
+    "type": "open-ended"
+  },
+  {
+    "id": 39,
+    "category": "Basics of Capacitor",
+    "questionText": "What is the application of a Capacitor in a circuit?",
+    "type": "open-ended"
+  },
+  {
+    "id": 40,
+    "category": "Basics of Capacitor",
+    "questionText": "What are the different types of Capacitor?",
+    "type": "open-ended"
+  },
+  {
+    "id": 41,
+    "category": "Basics of Capacitor",
+    "questionText": "Write the common specifications you will find in a Capacitor Datasheet.",
+    "type": "open-ended"
+  },
+  {
+    "id": 42,
+    "category": "Basics of Capacitor",
+    "questionText": "Calculate the equivalent capacitance across the terminal A and B.",
+    "type": "open-ended"
+  },
+  {
+    "id": 43,
+    "category": "Basics of Capacitor",
+    "questionText": "Calculate the time required to Vout = Vin, assuming R=5kΩ and C=10µF.",
+    "type": "open-ended"
+  },
+  {
+    "id": 44,
+    "category": "Basics of Capacitor",
+    "questionText": "What is Coupling, Decoupling and Bypass capacitor? Explain with an application example.",
+    "type": "open-ended"
+  },
+  {
+    "id": 45,
+    "category": "Basics of Capacitor",
+    "questionText": "How to select the value of coupling and bypass capacitor?",
+    "type": "open-ended"
+  },
+  {
+    "id": 46,
+    "category": "Basics of Inductor",
+    "questionText": "Describe the application of an Inductor in a circuit?",
+    "type": "open-ended"
+  },
+  {
+    "id": 47,
+    "category": "Basics of Inductor",
+    "questionText": "What are the parameters of an inductor fabrication having specific inductance value?",
+    "type": "open-ended"
+  },
+  {
+    "id": 48,
+    "category": "Basics of Inductor",
+    "questionText": "A coil of inductance 150mH and zero resistance is connected across a 100V, 50Hz supply. Calculate the inductive reactance of the coil and the current flowing through it.",
+    "type": "open-ended"
+  },
+  {
+    "id": 49,
+    "category": "Basics of Inductor",
+    "questionText": "The switch in the RL circuit shown in figure is moved from position 1 to position 2 at t=0. Obtain vR and vL with polarities as indicated.",
+    "type": "open-ended"
+  },
+  {
+    "id": 50,
+    "category": "Basics of Inductor",
+    "questionText": "Can we fabricate an inductor in an IC?",
+    "type": "open-ended"
+  },
+  {
+    "id": 51,
+    "category": "Basics of Diode",
+    "questionText": "Describe the application of the diode in a circuit?",
+    "type": "open-ended"
+  },
+  {
+    "id": 52,
+    "category": "Basics of Diode",
+    "questionText": "Draw and explain two simple circuits that use diodes.",
+    "type": "open-ended"
+  },
+  {
+    "id": 53,
+    "category": "Basics of Diode",
+    "questionText": "Find out the voltage across diode (Vo) for the circuits shown below.",
+    "type": "open-ended"
+  },
+  {
+    "id": 54,
+    "category": "Basics of Diode",
+    "questionText": "In the following circuit calculate VB and IO if a. VA=0.4V b. VA=2.5V",
+    "type": "open-ended"
+  },
+  {
+    "id": 55,
+    "category": "Basics of Diode",
+    "questionText": "Assuming diodes are normal, Use the following circuit as reference calculate the output voltage vo.",
+    "type": "open-ended"
+  },
+  {
+    "id": 56,
+    "category": "Basics of Op-Amp",
+    "questionText": "List out the properties of an ideal Op-Amp and Practical Op-Amp.",
+    "type": "open-ended"
+  },
+  {
+    "id": 57,
+    "category": "Basics of Op-Amp",
+    "questionText": "Draw and explain an inverting amplifier circuit using Op-Amp.",
+    "type": "open-ended"
+  },
+  {
+    "id": 58,
+    "category": "Basics of Op-Amp",
+    "questionText": "Draw and explain a buffer circuit using Op-Amp.",
+    "type": "open-ended"
+  },
+  {
+    "id": 59,
+    "category": "Basics of Op-Amp",
+    "questionText": "Draw and explain a comparator circuit using Op-Amp.",
+    "type": "open-ended"
+  },
+  {
+    "id": 60,
+    "category": "Basics of Op-Amp",
+    "questionText": "Draw and explain a level shifter circuit using Op-Amp",
+    "type": "open-ended"
+  },
+  {
+    "id": 61,
+    "category": "Basics of Op-Amp",
+    "questionText": "Draw and explain a Voltage to Current/Current to Voltage converter circuit using Op-Amp.",
+    "type": "open-ended"
+  },
+  {
+    "id": 62,
+    "category": "Basics of AC/DC",
+    "questionText": "What is Alternating Current?",
+    "type": "open-ended"
+  },
+  {
+    "id": 63,
+    "category": "Basics of AC/DC",
+    "questionText": "In this figure below which is the alternating current?",
+    "type": "open-ended"
+  },
+  {
+    "id": 64,
+    "category": "Basics of AC/DC",
+    "questionText": "What is Direct Current?",
+    "type": "open-ended"
+  },
+  {
+    "id": 65,
+    "category": "Basics of AC/DC",
+    "questionText": "How to convert an AC to DC?",
+    "type": "open-ended"
+  },
+  {
+    "id": 66,
+    "category": "Power Supply and Specifications",
+    "questionText": "Define the different types of power supplies.",
+    "type": "open-ended"
+  },
+  {
+    "id": 67,
+    "category": "Power Supply and Specifications",
+    "questionText": "Describe the critical specifications of power supply.",
+    "type": "open-ended"
+  },
+  {
+    "id": 68,
+    "category": "Power Supply and Specifications",
+    "questionText": "Draw the functional block diagram of the power supply.",
+    "type": "open-ended"
+  },
+  {
+    "id": 69,
+    "category": "Power Supply and Specifications",
+    "questionText": "What are Ranges and Clamps?",
+    "type": "open-ended"
+  },
+  {
+    "id": 70,
+    "category": "Power Supply and Specifications",
+    "questionText": "What is Accuracy?",
+    "type": "open-ended"
+  },
+  {
+    "id": 71,
+    "category": "Power Supply and Specifications",
+    "questionText": "What is Resolution?",
+    "type": "open-ended"
+  },
+  {
+    "id": 72,
+    "category": "Power Supply and Specifications",
+    "questionText": "What is 4-Quadrant power supply? Explain with a block diagram.",
+    "type": "open-ended"
+  },
+  {
+    "id": 73,
+    "category": "Power Supply and Specifications",
+    "questionText": "Find which quadrant the power supplies in the below pictures are working in",
+    "type": "open-ended"
+  },
+  {
+    "id": 74,
+    "category": "Power Supply and Specifications",
+    "questionText": "When Forcing Voltage, what would you measure and what would you clamp?",
+    "type": "open-ended"
+  },
+  {
+    "id": 75,
+    "category": "Power Supply and Specifications",
+    "questionText": "When Forcing Current, What would you measure and what would you clamp?",
+    "type": "open-ended"
+  },
+  {
+    "id": 76,
+    "category": "Power Supply and Specifications",
+    "questionText": "What is Auto Crossover and when does it happen?",
+    "type": "open-ended"
+  },
+  {
+    "id": 77,
+    "category": "Power Supply and Specifications",
+    "questionText": "Find the values for V and I in following cases.",
+    "type": "open-ended"
+  },
+  {
+    "id": 78,
+    "category": "Power Supply and Specifications",
+    "questionText": "Find the values for V and I in following cases.",
+    "type": "open-ended"
+  },
+  {
+    "id": 79,
+    "category": "Power Supply and Specifications",
+    "questionText": "Consider you have purchased a DC power supply whose specification is as shown below. Can you program it to generate 12.63 Volts?",
+    "type": "open-ended"
+  },
+  {
+    "id": 80,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "Draw a block diagram of the Multimeter.",
+    "type": "open-ended"
+  },
+  {
+    "id": 81,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "Give the important specifications of a Multimeter.",
+    "type": "open-ended"
+  },
+  {
+    "id": 82,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How does a multimeter measure resistance?",
+    "type": "open-ended"
+  },
+  {
+    "id": 83,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How does range selection affect the measured results?",
+    "type": "open-ended"
+  },
+  {
+    "id": 84,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "What will happen if you measure a gold chain’s weight using the weighing scales that are used to measure rice and other grains?",
+    "type": "open-ended"
+  },
+  {
+    "id": 85,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "What is the difference between the pictures taken with a 2 Megapixel camera and a 20 Megapixel camera? Explain the differences.",
+    "type": "open-ended"
+  },
+  {
+    "id": 86,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "What is the maximum value you can read from a 3 1/2 digit Multimeter",
+    "type": "open-ended"
+  },
+  {
+    "id": 87,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "What does it mean if a meter specification shows “60,000-count” in the display",
+    "type": "open-ended"
+  },
+  {
+    "id": 88,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "What is the advantage of having an inbuilt meter?",
+    "type": "open-ended"
+  },
+  {
+    "id": 89,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "Consider you have purchased a Multimeter with specification as shown below. Can you measure 200.0032 Volts using this Meter?",
+    "type": "open-ended"
+  },
+  {
+    "id": 90,
+    "category": "2 Wire/4 Wire Connections",
+    "questionText": "What is the voltage of the DUT connected across a power supply of 10V if a. DUTresistance = 10KΩ b. DUTresistance = 10Ω",
+    "type": "open-ended"
+  },
+  {
+    "id": 91,
+    "category": "2 Wire/4 Wire Connections",
+    "questionText": "What is the voltage of DUT connected across a power supply of 10V if (RLEAD is 0.1Ω considering) a. DUTresistance = 10KΩ b. DUTresistance = 10Ω. Suggest a solution to avoid the error.",
+    "type": "open-ended"
+  },
+  {
+    "id": 92,
+    "category": "2 Wire/4 Wire Connections",
+    "questionText": "Find the percentage error in measurement of the following resistance using Multimeter (RLEAD = 0.5Ω and current forced is I=1mA) a. 1kΩ±1% b. 10Ω±1%. What is the solution to avoid the error?",
+    "type": "open-ended"
+  },
+  {
+    "id": 93,
+    "category": "Basics of Digital",
+    "questionText": "What is Digital signal?",
+    "type": "open-ended"
+  },
+  {
+    "id": 94,
+    "category": "Basics of Digital",
+    "questionText": "Draw the o/p waveform of an AND gate (both inputs shorted), with a given sine wave input of 0 to 4V. Draw the output waveform in the same plot.",
+    "type": "open-ended"
+  },
+  {
+    "id": 95,
+    "category": "Basics of Digital",
+    "questionText": "Draw a continuous waveform for the below data: 0 1 0 1 1 0 1 0 0 1",
+    "type": "open-ended"
+  },
+  {
+    "id": 96,
+    "category": "Basics of Digital",
+    "questionText": "Draw an AND gate IC with all pins involved. (How many AND gates and how many Inputs are there?)",
+    "type": "open-ended"
+  },
+  {
+    "id": 97,
+    "category": "Basics of Digital",
+    "questionText": "Write the truth table of AND gate.",
+    "type": "open-ended"
+  },
+  {
+    "id": 98,
+    "category": "Basics of Digital",
+    "questionText": "Convert the truth table to real-time waveform.",
+    "type": "open-ended"
+  },
+  {
+    "id": 99,
+    "category": "Basics of Digital",
+    "questionText": "Apply logic levels to the waveform.",
+    "type": "open-ended"
+  },
+  {
+    "id": 100,
+    "category": "Basics of Digital",
+    "questionText": "What are the requirements to convert the truth table to a digital waveform?",
+    "type": "open-ended"
+  },
+  {
+    "id": 101,
+    "category": "Basics of Digital",
+    "questionText": "Analyze the binary data at the given intervals.",
+    "type": "open-ended"
+  },
+  {
+    "id": 102,
+    "category": "Basics of Digital",
+    "questionText": "Redraw the AND gate waveform with timing information.",
+    "type": "open-ended"
+  },
+  {
+    "id": 103,
+    "category": "Basics of Digital",
+    "questionText": "What is Rise time?",
+    "type": "open-ended"
+  },
+  {
+    "id": 104,
+    "category": "Basics of Digital",
+    "questionText": "What is fall time?",
+    "type": "open-ended"
+  },
+  {
+    "id": 105,
+    "category": "Basics of Digital",
+    "questionText": "What is the reason for longer rise and fall time? How to improve it?",
+    "type": "open-ended"
+  },
+  {
+    "id": 106,
+    "category": "Basics of Digital",
+    "questionText": "A and B input pins, rise/fall times are 10ns. Assume A has 5ns additional delay than B. Redraw the output waveform of the AND gate.",
+    "type": "open-ended"
+  },
+  {
+    "id": 107,
+    "category": "Basics of Digital",
+    "questionText": "Draw a D flip-flop with all signals and draw the waveform for 4 cycles.",
+    "type": "open-ended"
+  },
+  {
+    "id": 108,
+    "category": "Basics of Digital",
+    "questionText": "Draw the waveform below assuming that the Data line has 5ns delay than a clock.",
+    "type": "open-ended"
+  },
+  {
+    "id": 109,
+    "category": "Basics of Digital",
+    "questionText": "What is Setup Time?",
+    "type": "open-ended"
+  },
+  {
+    "id": 110,
+    "category": "Basics of Digital",
+    "questionText": "What is Hold Time?",
+    "type": "open-ended"
+  },
+  {
+    "id": 111,
+    "category": "Basics of Digital",
+    "questionText": "What is Propagation Delay?",
+    "type": "open-ended"
+  },
+  {
+    "id": 112,
+    "category": "Basics of Digital",
+    "questionText": "Observe the waveform given below: What is (t1 - t2)?",
+    "type": "open-ended"
+  },
+  {
+    "id": 113,
+    "category": "Basics of Digital",
+    "questionText": "Redraw the D-Flipflop waveform with clock freq = 10 MHz, Setup time = 10ns, hold time = 15ns and propagation time = 20ns",
+    "type": "open-ended"
+  },
+  {
+    "id": 114,
+    "category": "Basics of Digital",
+    "questionText": "What is Duty cycle? Give an example of its use.",
+    "type": "open-ended"
+  },
+  {
+    "id": 115,
+    "category": "Basics of Digital",
+    "questionText": "What is data rate?",
+    "type": "open-ended"
+  },
+  {
+    "id": 116,
+    "category": "Basics of Digital",
+    "questionText": "Draw clock waveform with clear timing information to transmit same data at Q output of D-Flip Flop.",
+    "type": "open-ended"
+  },
+  {
+    "id": 117,
+    "category": "Basics of Digital",
+    "questionText": "Considering the specifications of the above problem for both Flip-Flop, draw the output waveform at Y",
+    "type": "open-ended"
+  },
+  {
+    "id": 118,
+    "category": "Basics of Digital",
+    "questionText": "Explain the different voltage levels parameters on digital IC?",
+    "type": "open-ended"
+  },
+  {
+    "id": 119,
+    "category": "Basics of Digital",
+    "questionText": "Explain the different current parameters for a digital IC.",
+    "type": "open-ended"
+  },
+  {
+    "id": 120,
+    "category": "Basics of Digital",
+    "questionText": "While you are studying the digital IC datasheet, you find that the datasheet is missing the VOH parameter but VOL is available. What may be the reason?",
+    "type": "open-ended"
+  },
+  {
+    "id": 121,
+    "category": "Basics of Digital",
+    "questionText": "Given the specifications below, calculate a. How many inputs can the output drive Low?",
+    "type": "open-ended"
+  },
+  {
+    "id": 122,
+    "category": "LA/PG",
+    "questionText": "What are the basic instrument requirements to test a digital IC?",
+    "type": "open-ended"
+  },
+  {
+    "id": 123,
+    "category": "LA/PG",
+    "questionText": "Define the important specifications of Pattern Generator",
+    "type": "open-ended"
+  },
+  {
+    "id": 124,
+    "category": "LA/PG",
+    "questionText": "What are the important specifications of Logic Analyzer?",
+    "type": "open-ended"
+  },
+  {
+    "id": 125,
+    "category": "LA/PG",
+    "questionText": "Draw the block diagram of Pattern Generator.",
+    "type": "open-ended"
+  },
+  {
+    "id": 126,
+    "category": "LA/PG",
+    "questionText": "Draw the block diagram of Logic Analyzer.",
+    "type": "open-ended"
+  },
+  {
+    "id": 127,
+    "category": "LA/PG",
+    "questionText": "Draw the block diagram of PG / LA.",
+    "type": "open-ended"
+  },
+  {
+    "id": 128,
+    "category": "LA/PG",
+    "questionText": "What are driving edges?",
+    "type": "open-ended"
+  },
+  {
+    "id": 129,
+    "category": "LA/PG",
+    "questionText": "Assume the tester cycle of 50ns (minimum). How you can program to generate a 20MHz clock pulse from a digital card. Explain with clear timing diagram and driving edges.",
+    "type": "open-ended"
+  },
+  {
+    "id": 130,
+    "category": "LA/PG",
+    "questionText": "What is strobing?",
+    "type": "open-ended"
+  },
+  {
+    "id": 131,
+    "category": "LA/PG",
+    "questionText": "Consider you have connected input A and B to a pattern generator to test the complete functionality of the circuit. Draw a clear timing diagram.",
+    "type": "open-ended"
+  },
+  {
+    "id": 132,
+    "category": "LA/PG",
+    "questionText": "A pattern generator specification shows 500MHz (maximum frequency), rise time and fall time 10ns. You are going to test the functionality of 74HC08 IC.",
+    "type": "open-ended"
+  },
+  {
+    "id": 133,
+    "category": "Generic details of Digital IC",
+    "questionText": "Why does a device or SOC have many power domains?",
+    "type": "open-ended"
+  },
+  {
+    "id": 134,
+    "category": "Generic details of Digital IC",
+    "questionText": "Why does VDD core supply voltage lower than VDDIO supply voltage?",
+    "type": "open-ended"
+  },
+  {
+    "id": 135,
+    "category": "Generic details of Digital IC",
+    "questionText": "Name the different types of digital pins in an IC?",
+    "type": "open-ended"
+  },
+  {
+    "id": 136,
+    "category": "Generic details of Digital IC",
+    "questionText": "What are the different control pins?",
+    "type": "open-ended"
+  },
+  {
+    "id": 137,
+    "category": "Generic details of Digital IC",
+    "questionText": "Explain the advantages of POR (Power-on Reset). What happens during POR?",
+    "type": "open-ended"
+  },
+  {
+    "id": 138,
+    "category": "Generic details of Digital IC",
+    "questionText": "What is sleep mode? Explain the difference between sleep Vs power-down modes.",
+    "type": "open-ended"
+  },
+  {
+    "id": 139,
+    "category": "Generic details of Digital IC",
+    "questionText": "Why does the same power domain have multiple pins? Explain why some are: a. Clustered together b. Positioned at different locations.",
+    "type": "open-ended"
+  },
+  {
+    "id": 140,
+    "category": "Generic details of Digital IC",
+    "questionText": "Why are multiple Gnd pins positioned at different locations in the VLSI Chip?",
+    "type": "open-ended"
+  },
+  {
+    "id": 141,
+    "category": "Generic details of Digital IC",
+    "questionText": "What are the different Gnd types?",
+    "type": "open-ended"
+  },
+  {
+    "id": 142,
+    "category": "Generic details of Digital IC",
+    "questionText": "What is an Open-Collector/Open-Drain Circuit? When it is useful?",
+    "type": "open-ended"
+  },
+  {
+    "id": 143,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 143)",
+    "type": "open-ended"
+  },
+  {
+    "id": 144,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 144)",
+    "type": "open-ended"
+  },
+  {
+    "id": 145,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the leakage current from the datasheet specifications? (Variant 145)",
+    "type": "open-ended"
+  },
+  {
+    "id": 146,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the maximum power dissipation from the datasheet specifications? (Variant 146)",
+    "type": "open-ended"
+  },
+  {
+    "id": 147,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 147)",
+    "type": "open-ended"
+  },
+  {
+    "id": 148,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 148)",
+    "type": "open-ended"
+  },
+  {
+    "id": 149,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 5V? (Variant 149)",
+    "type": "open-ended"
+  },
+  {
+    "id": 150,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type wafer. (Variant 150)",
+    "type": "open-ended"
+  },
+  {
+    "id": 151,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of load regulation in a power supply. (Variant 151)",
+    "type": "open-ended"
+  },
+  {
+    "id": 152,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the leakage current from the datasheet specifications? (Variant 152)",
+    "type": "open-ended"
+  },
+  {
+    "id": 153,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 153)",
+    "type": "open-ended"
+  },
+  {
+    "id": 154,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 154)",
+    "type": "open-ended"
+  },
+  {
+    "id": 155,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure transistor hFE? (Variant 155)",
+    "type": "open-ended"
+  },
+  {
+    "id": 156,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 15V supply and 10Ω resistance, what is the current? (Variant 156)",
+    "type": "open-ended"
+  },
+  {
+    "id": 157,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 157)",
+    "type": "open-ended"
+  },
+  {
+    "id": 158,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 15V? (Variant 158)",
+    "type": "open-ended"
+  },
+  {
+    "id": 159,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type wafer. (Variant 159)",
+    "type": "open-ended"
+  },
+  {
+    "id": 160,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 160)",
+    "type": "open-ended"
+  },
+  {
+    "id": 161,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 161)",
+    "type": "open-ended"
+  },
+  {
+    "id": 162,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 162)",
+    "type": "open-ended"
+  },
+  {
+    "id": 163,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the propagation delay from the datasheet specifications? (Variant 163)",
+    "type": "open-ended"
+  },
+  {
+    "id": 164,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure transistor hFE? (Variant 164)",
+    "type": "open-ended"
+  },
+  {
+    "id": 165,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 15V supply and 50Ω resistance, what is the current? (Variant 165)",
+    "type": "open-ended"
+  },
+  {
+    "id": 166,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 220V? (Variant 166)",
+    "type": "open-ended"
+  },
+  {
+    "id": 167,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 167)",
+    "type": "open-ended"
+  },
+  {
+    "id": 168,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XNOR gate. (Variant 168)",
+    "type": "open-ended"
+  },
+  {
+    "id": 169,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 169)",
+    "type": "open-ended"
+  },
+  {
+    "id": 170,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of load regulation in a power supply. (Variant 170)",
+    "type": "open-ended"
+  },
+  {
+    "id": 171,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 171)",
+    "type": "open-ended"
+  },
+  {
+    "id": 172,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the propagation delay from the datasheet specifications? (Variant 172)",
+    "type": "open-ended"
+  },
+  {
+    "id": 173,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure transistor hFE? (Variant 173)",
+    "type": "open-ended"
+  },
+  {
+    "id": 174,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 174)",
+    "type": "open-ended"
+  },
+  {
+    "id": 175,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 15V? (Variant 175)",
+    "type": "open-ended"
+  },
+  {
+    "id": 176,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 176)",
+    "type": "open-ended"
+  },
+  {
+    "id": 177,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 48V supply and 330Ω resistance, what is the current? (Variant 177)",
+    "type": "open-ended"
+  },
+  {
+    "id": 178,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 178)",
+    "type": "open-ended"
+  },
+  {
+    "id": 179,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of ripple rejection in a power supply. (Variant 179)",
+    "type": "open-ended"
+  },
+  {
+    "id": 180,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 180)",
+    "type": "open-ended"
+  },
+  {
+    "id": 181,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 24V? (Variant 181)",
+    "type": "open-ended"
+  },
+  {
+    "id": 182,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure transistor hFE? (Variant 182)",
+    "type": "open-ended"
+  },
+  {
+    "id": 183,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 48V? (Variant 183)",
+    "type": "open-ended"
+  },
+  {
+    "id": 184,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure transistor hFE? (Variant 184)",
+    "type": "open-ended"
+  },
+  {
+    "id": 185,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 185)",
+    "type": "open-ended"
+  },
+  {
+    "id": 186,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of silicon in a semiconductor material? (Variant 186)",
+    "type": "open-ended"
+  },
+  {
+    "id": 187,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 187)",
+    "type": "open-ended"
+  },
+  {
+    "id": 188,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type wafer. (Variant 188)",
+    "type": "open-ended"
+  },
+  {
+    "id": 189,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 189)",
+    "type": "open-ended"
+  },
+  {
+    "id": 190,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 190)",
+    "type": "open-ended"
+  },
+  {
+    "id": 191,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 191)",
+    "type": "open-ended"
+  },
+  {
+    "id": 192,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 192)",
+    "type": "open-ended"
+  },
+  {
+    "id": 193,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 193)",
+    "type": "open-ended"
+  },
+  {
+    "id": 194,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the input bias current from the datasheet specifications? (Variant 194)",
+    "type": "open-ended"
+  },
+  {
+    "id": 195,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 195)",
+    "type": "open-ended"
+  },
+  {
+    "id": 196,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 196)",
+    "type": "open-ended"
+  },
+  {
+    "id": 197,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 197)",
+    "type": "open-ended"
+  },
+  {
+    "id": 198,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of ripple rejection in a power supply. (Variant 198)",
+    "type": "open-ended"
+  },
+  {
+    "id": 199,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 199)",
+    "type": "open-ended"
+  },
+  {
+    "id": 200,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 200)",
+    "type": "open-ended"
+  },
+  {
+    "id": 201,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 12V? (Variant 201)",
+    "type": "open-ended"
+  },
+  {
+    "id": 202,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 202)",
+    "type": "open-ended"
+  },
+  {
+    "id": 203,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 203)",
+    "type": "open-ended"
+  },
+  {
+    "id": 204,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 10V? (Variant 204)",
+    "type": "open-ended"
+  },
+  {
+    "id": 205,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XNOR gate. (Variant 205)",
+    "type": "open-ended"
+  },
+  {
+    "id": 206,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 206)",
+    "type": "open-ended"
+  },
+  {
+    "id": 207,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 207)",
+    "type": "open-ended"
+  },
+  {
+    "id": 208,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 10V? (Variant 208)",
+    "type": "open-ended"
+  },
+  {
+    "id": 209,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of line regulation in a power supply. (Variant 209)",
+    "type": "open-ended"
+  },
+  {
+    "id": 210,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 210)",
+    "type": "open-ended"
+  },
+  {
+    "id": 211,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 5V supply and 470Ω resistance, what is the current? (Variant 211)",
+    "type": "open-ended"
+  },
+  {
+    "id": 212,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 212)",
+    "type": "open-ended"
+  },
+  {
+    "id": 213,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 213)",
+    "type": "open-ended"
+  },
+  {
+    "id": 214,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 214)",
+    "type": "open-ended"
+  },
+  {
+    "id": 215,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 215)",
+    "type": "open-ended"
+  },
+  {
+    "id": 216,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 216)",
+    "type": "open-ended"
+  },
+  {
+    "id": 217,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 217)",
+    "type": "open-ended"
+  },
+  {
+    "id": 218,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 218)",
+    "type": "open-ended"
+  },
+  {
+    "id": 219,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of line regulation in a power supply. (Variant 219)",
+    "type": "open-ended"
+  },
+  {
+    "id": 220,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XNOR gate. (Variant 220)",
+    "type": "open-ended"
+  },
+  {
+    "id": 221,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of germanium in a semiconductor material? (Variant 221)",
+    "type": "open-ended"
+  },
+  {
+    "id": 222,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 222)",
+    "type": "open-ended"
+  },
+  {
+    "id": 223,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 220V supply and 50Ω resistance, what is the current? (Variant 223)",
+    "type": "open-ended"
+  },
+  {
+    "id": 224,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the input bias current from the datasheet specifications? (Variant 224)",
+    "type": "open-ended"
+  },
+  {
+    "id": 225,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 225)",
+    "type": "open-ended"
+  },
+  {
+    "id": 226,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 226)",
+    "type": "open-ended"
+  },
+  {
+    "id": 227,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 48V supply and 220Ω resistance, what is the current? (Variant 227)",
+    "type": "open-ended"
+  },
+  {
+    "id": 228,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of line regulation in a power supply. (Variant 228)",
+    "type": "open-ended"
+  },
+  {
+    "id": 229,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 229)",
+    "type": "open-ended"
+  },
+  {
+    "id": 230,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 230)",
+    "type": "open-ended"
+  },
+  {
+    "id": 231,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 231)",
+    "type": "open-ended"
+  },
+  {
+    "id": 232,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 232)",
+    "type": "open-ended"
+  },
+  {
+    "id": 233,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 233)",
+    "type": "open-ended"
+  },
+  {
+    "id": 234,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 234)",
+    "type": "open-ended"
+  },
+  {
+    "id": 235,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 235)",
+    "type": "open-ended"
+  },
+  {
+    "id": 236,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 236)",
+    "type": "open-ended"
+  },
+  {
+    "id": 237,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the maximum power dissipation from the datasheet specifications? (Variant 237)",
+    "type": "open-ended"
+  },
+  {
+    "id": 238,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 5V? (Variant 238)",
+    "type": "open-ended"
+  },
+  {
+    "id": 239,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 239)",
+    "type": "open-ended"
+  },
+  {
+    "id": 240,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 240)",
+    "type": "open-ended"
+  },
+  {
+    "id": 241,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of silicon in a semiconductor material? (Variant 241)",
+    "type": "open-ended"
+  },
+  {
+    "id": 242,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 242)",
+    "type": "open-ended"
+  },
+  {
+    "id": 243,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 243)",
+    "type": "open-ended"
+  },
+  {
+    "id": 244,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 220V? (Variant 244)",
+    "type": "open-ended"
+  },
+  {
+    "id": 245,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 245)",
+    "type": "open-ended"
+  },
+  {
+    "id": 246,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 246)",
+    "type": "open-ended"
+  },
+  {
+    "id": 247,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the propagation delay from the datasheet specifications? (Variant 247)",
+    "type": "open-ended"
+  },
+  {
+    "id": 248,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 48V supply and 1000Ω resistance, what is the current? (Variant 248)",
+    "type": "open-ended"
+  },
+  {
+    "id": 249,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type wafer. (Variant 249)",
+    "type": "open-ended"
+  },
+  {
+    "id": 250,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 5V supply and 330Ω resistance, what is the current? (Variant 250)",
+    "type": "open-ended"
+  },
+  {
+    "id": 251,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of line regulation in a power supply. (Variant 251)",
+    "type": "open-ended"
+  },
+  {
+    "id": 252,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of line regulation in a power supply. (Variant 252)",
+    "type": "open-ended"
+  },
+  {
+    "id": 253,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 253)",
+    "type": "open-ended"
+  },
+  {
+    "id": 254,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 254)",
+    "type": "open-ended"
+  },
+  {
+    "id": 255,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of silicon in a semiconductor material? (Variant 255)",
+    "type": "open-ended"
+  },
+  {
+    "id": 256,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 256)",
+    "type": "open-ended"
+  },
+  {
+    "id": 257,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 20V supply and 1000Ω resistance, what is the current? (Variant 257)",
+    "type": "open-ended"
+  },
+  {
+    "id": 258,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 258)",
+    "type": "open-ended"
+  },
+  {
+    "id": 259,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 259)",
+    "type": "open-ended"
+  },
+  {
+    "id": 260,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 260)",
+    "type": "open-ended"
+  },
+  {
+    "id": 261,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 261)",
+    "type": "open-ended"
+  },
+  {
+    "id": 262,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 262)",
+    "type": "open-ended"
+  },
+  {
+    "id": 263,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 263)",
+    "type": "open-ended"
+  },
+  {
+    "id": 264,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 264)",
+    "type": "open-ended"
+  },
+  {
+    "id": 265,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 12V supply and 330Ω resistance, what is the current? (Variant 265)",
+    "type": "open-ended"
+  },
+  {
+    "id": 266,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 266)",
+    "type": "open-ended"
+  },
+  {
+    "id": 267,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 267)",
+    "type": "open-ended"
+  },
+  {
+    "id": 268,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 5V supply and 220Ω resistance, what is the current? (Variant 268)",
+    "type": "open-ended"
+  },
+  {
+    "id": 269,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 269)",
+    "type": "open-ended"
+  },
+  {
+    "id": 270,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 270)",
+    "type": "open-ended"
+  },
+  {
+    "id": 271,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 271)",
+    "type": "open-ended"
+  },
+  {
+    "id": 272,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 220V supply and 100Ω resistance, what is the current? (Variant 272)",
+    "type": "open-ended"
+  },
+  {
+    "id": 273,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 273)",
+    "type": "open-ended"
+  },
+  {
+    "id": 274,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 274)",
+    "type": "open-ended"
+  },
+  {
+    "id": 275,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of silicon in a semiconductor material? (Variant 275)",
+    "type": "open-ended"
+  },
+  {
+    "id": 276,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 276)",
+    "type": "open-ended"
+  },
+  {
+    "id": 277,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 24V supply and 100Ω resistance, what is the current? (Variant 277)",
+    "type": "open-ended"
+  },
+  {
+    "id": 278,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 278)",
+    "type": "open-ended"
+  },
+  {
+    "id": 279,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 220V? (Variant 279)",
+    "type": "open-ended"
+  },
+  {
+    "id": 280,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of silicon in a semiconductor material? (Variant 280)",
+    "type": "open-ended"
+  },
+  {
+    "id": 281,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 281)",
+    "type": "open-ended"
+  },
+  {
+    "id": 282,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 282)",
+    "type": "open-ended"
+  },
+  {
+    "id": 283,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 48V? (Variant 283)",
+    "type": "open-ended"
+  },
+  {
+    "id": 284,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of ripple rejection in a power supply. (Variant 284)",
+    "type": "open-ended"
+  },
+  {
+    "id": 285,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 285)",
+    "type": "open-ended"
+  },
+  {
+    "id": 286,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 286)",
+    "type": "open-ended"
+  },
+  {
+    "id": 287,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 287)",
+    "type": "open-ended"
+  },
+  {
+    "id": 288,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 12V supply and 470Ω resistance, what is the current? (Variant 288)",
+    "type": "open-ended"
+  },
+  {
+    "id": 289,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 110V? (Variant 289)",
+    "type": "open-ended"
+  },
+  {
+    "id": 290,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 290)",
+    "type": "open-ended"
+  },
+  {
+    "id": 291,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 291)",
+    "type": "open-ended"
+  },
+  {
+    "id": 292,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of load regulation in a power supply. (Variant 292)",
+    "type": "open-ended"
+  },
+  {
+    "id": 293,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 293)",
+    "type": "open-ended"
+  },
+  {
+    "id": 294,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 294)",
+    "type": "open-ended"
+  },
+  {
+    "id": 295,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the propagation delay from the datasheet specifications? (Variant 295)",
+    "type": "open-ended"
+  },
+  {
+    "id": 296,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XNOR gate. (Variant 296)",
+    "type": "open-ended"
+  },
+  {
+    "id": 297,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 15V supply and 470Ω resistance, what is the current? (Variant 297)",
+    "type": "open-ended"
+  },
+  {
+    "id": 298,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 220V? (Variant 298)",
+    "type": "open-ended"
+  },
+  {
+    "id": 299,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 299)",
+    "type": "open-ended"
+  },
+  {
+    "id": 300,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 110V supply and 330Ω resistance, what is the current? (Variant 300)",
+    "type": "open-ended"
+  },
+  {
+    "id": 301,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 301)",
+    "type": "open-ended"
+  },
+  {
+    "id": 302,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of line regulation in a power supply. (Variant 302)",
+    "type": "open-ended"
+  },
+  {
+    "id": 303,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of germanium in a semiconductor material? (Variant 303)",
+    "type": "open-ended"
+  },
+  {
+    "id": 304,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 110V? (Variant 304)",
+    "type": "open-ended"
+  },
+  {
+    "id": 305,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 305)",
+    "type": "open-ended"
+  },
+  {
+    "id": 306,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 10V? (Variant 306)",
+    "type": "open-ended"
+  },
+  {
+    "id": 307,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 24V supply and 470Ω resistance, what is the current? (Variant 307)",
+    "type": "open-ended"
+  },
+  {
+    "id": 308,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 308)",
+    "type": "open-ended"
+  },
+  {
+    "id": 309,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 10V supply and 1000Ω resistance, what is the current? (Variant 309)",
+    "type": "open-ended"
+  },
+  {
+    "id": 310,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 110V supply and 50Ω resistance, what is the current? (Variant 310)",
+    "type": "open-ended"
+  },
+  {
+    "id": 311,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 311)",
+    "type": "open-ended"
+  },
+  {
+    "id": 312,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of load regulation in a power supply. (Variant 312)",
+    "type": "open-ended"
+  },
+  {
+    "id": 313,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 313)",
+    "type": "open-ended"
+  },
+  {
+    "id": 314,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 314)",
+    "type": "open-ended"
+  },
+  {
+    "id": 315,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 315)",
+    "type": "open-ended"
+  },
+  {
+    "id": 316,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 316)",
+    "type": "open-ended"
+  },
+  {
+    "id": 317,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XNOR gate. (Variant 317)",
+    "type": "open-ended"
+  },
+  {
+    "id": 318,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 110V? (Variant 318)",
+    "type": "open-ended"
+  },
+  {
+    "id": 319,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the thermal resistance from the datasheet specifications? (Variant 319)",
+    "type": "open-ended"
+  },
+  {
+    "id": 320,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 20V? (Variant 320)",
+    "type": "open-ended"
+  },
+  {
+    "id": 321,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the leakage current from the datasheet specifications? (Variant 321)",
+    "type": "open-ended"
+  },
+  {
+    "id": 322,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 12V supply and 1000Ω resistance, what is the current? (Variant 322)",
+    "type": "open-ended"
+  },
+  {
+    "id": 323,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 10V? (Variant 323)",
+    "type": "open-ended"
+  },
+  {
+    "id": 324,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 324)",
+    "type": "open-ended"
+  },
+  {
+    "id": 325,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 10V supply and 2200Ω resistance, what is the current? (Variant 325)",
+    "type": "open-ended"
+  },
+  {
+    "id": 326,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 326)",
+    "type": "open-ended"
+  },
+  {
+    "id": 327,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 15V? (Variant 327)",
+    "type": "open-ended"
+  },
+  {
+    "id": 328,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 328)",
+    "type": "open-ended"
+  },
+  {
+    "id": 329,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 329)",
+    "type": "open-ended"
+  },
+  {
+    "id": 330,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure transistor hFE? (Variant 330)",
+    "type": "open-ended"
+  },
+  {
+    "id": 331,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 110V supply and 470Ω resistance, what is the current? (Variant 331)",
+    "type": "open-ended"
+  },
+  {
+    "id": 332,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 332)",
+    "type": "open-ended"
+  },
+  {
+    "id": 333,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 333)",
+    "type": "open-ended"
+  },
+  {
+    "id": 334,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure transistor hFE? (Variant 334)",
+    "type": "open-ended"
+  },
+  {
+    "id": 335,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 335)",
+    "type": "open-ended"
+  },
+  {
+    "id": 336,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 336)",
+    "type": "open-ended"
+  },
+  {
+    "id": 337,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of line regulation in a power supply. (Variant 337)",
+    "type": "open-ended"
+  },
+  {
+    "id": 338,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 5V? (Variant 338)",
+    "type": "open-ended"
+  },
+  {
+    "id": 339,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 339)",
+    "type": "open-ended"
+  },
+  {
+    "id": 340,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 10V supply and 100Ω resistance, what is the current? (Variant 340)",
+    "type": "open-ended"
+  },
+  {
+    "id": 341,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 341)",
+    "type": "open-ended"
+  },
+  {
+    "id": 342,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 342)",
+    "type": "open-ended"
+  },
+  {
+    "id": 343,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of germanium in a semiconductor material? (Variant 343)",
+    "type": "open-ended"
+  },
+  {
+    "id": 344,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 344)",
+    "type": "open-ended"
+  },
+  {
+    "id": 345,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 15V? (Variant 345)",
+    "type": "open-ended"
+  },
+  {
+    "id": 346,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the maximum power dissipation from the datasheet specifications? (Variant 346)",
+    "type": "open-ended"
+  },
+  {
+    "id": 347,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 347)",
+    "type": "open-ended"
+  },
+  {
+    "id": 348,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 348)",
+    "type": "open-ended"
+  },
+  {
+    "id": 349,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 15V supply and 330Ω resistance, what is the current? (Variant 349)",
+    "type": "open-ended"
+  },
+  {
+    "id": 350,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 350)",
+    "type": "open-ended"
+  },
+  {
+    "id": 351,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 351)",
+    "type": "open-ended"
+  },
+  {
+    "id": 352,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of ripple rejection in a power supply. (Variant 352)",
+    "type": "open-ended"
+  },
+  {
+    "id": 353,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 353)",
+    "type": "open-ended"
+  },
+  {
+    "id": 354,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 354)",
+    "type": "open-ended"
+  },
+  {
+    "id": 355,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 355)",
+    "type": "open-ended"
+  },
+  {
+    "id": 356,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of load regulation in a power supply. (Variant 356)",
+    "type": "open-ended"
+  },
+  {
+    "id": 357,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 357)",
+    "type": "open-ended"
+  },
+  {
+    "id": 358,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 358)",
+    "type": "open-ended"
+  },
+  {
+    "id": 359,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the propagation delay from the datasheet specifications? (Variant 359)",
+    "type": "open-ended"
+  },
+  {
+    "id": 360,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 10V? (Variant 360)",
+    "type": "open-ended"
+  },
+  {
+    "id": 361,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 361)",
+    "type": "open-ended"
+  },
+  {
+    "id": 362,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 362)",
+    "type": "open-ended"
+  },
+  {
+    "id": 363,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the thermal resistance from the datasheet specifications? (Variant 363)",
+    "type": "open-ended"
+  },
+  {
+    "id": 364,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 48V? (Variant 364)",
+    "type": "open-ended"
+  },
+  {
+    "id": 365,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 5V? (Variant 365)",
+    "type": "open-ended"
+  },
+  {
+    "id": 366,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 366)",
+    "type": "open-ended"
+  },
+  {
+    "id": 367,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 367)",
+    "type": "open-ended"
+  },
+  {
+    "id": 368,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 5V supply and 10Ω resistance, what is the current? (Variant 368)",
+    "type": "open-ended"
+  },
+  {
+    "id": 369,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 369)",
+    "type": "open-ended"
+  },
+  {
+    "id": 370,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 370)",
+    "type": "open-ended"
+  },
+  {
+    "id": 371,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 371)",
+    "type": "open-ended"
+  },
+  {
+    "id": 372,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 372)",
+    "type": "open-ended"
+  },
+  {
+    "id": 373,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 373)",
+    "type": "open-ended"
+  },
+  {
+    "id": 374,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the propagation delay from the datasheet specifications? (Variant 374)",
+    "type": "open-ended"
+  },
+  {
+    "id": 375,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 375)",
+    "type": "open-ended"
+  },
+  {
+    "id": 376,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 376)",
+    "type": "open-ended"
+  },
+  {
+    "id": 377,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 377)",
+    "type": "open-ended"
+  },
+  {
+    "id": 378,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 378)",
+    "type": "open-ended"
+  },
+  {
+    "id": 379,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 379)",
+    "type": "open-ended"
+  },
+  {
+    "id": 380,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 10V supply and 100Ω resistance, what is the current? (Variant 380)",
+    "type": "open-ended"
+  },
+  {
+    "id": 381,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 12V supply and 220Ω resistance, what is the current? (Variant 381)",
+    "type": "open-ended"
+  },
+  {
+    "id": 382,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 382)",
+    "type": "open-ended"
+  },
+  {
+    "id": 383,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 5V? (Variant 383)",
+    "type": "open-ended"
+  },
+  {
+    "id": 384,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 384)",
+    "type": "open-ended"
+  },
+  {
+    "id": 385,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 385)",
+    "type": "open-ended"
+  },
+  {
+    "id": 386,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 386)",
+    "type": "open-ended"
+  },
+  {
+    "id": 387,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 12V? (Variant 387)",
+    "type": "open-ended"
+  },
+  {
+    "id": 388,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 388)",
+    "type": "open-ended"
+  },
+  {
+    "id": 389,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 24V supply and 470Ω resistance, what is the current? (Variant 389)",
+    "type": "open-ended"
+  },
+  {
+    "id": 390,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 390)",
+    "type": "open-ended"
+  },
+  {
+    "id": 391,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 391)",
+    "type": "open-ended"
+  },
+  {
+    "id": 392,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 392)",
+    "type": "open-ended"
+  },
+  {
+    "id": 393,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 12V supply and 2200Ω resistance, what is the current? (Variant 393)",
+    "type": "open-ended"
+  },
+  {
+    "id": 394,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 15V supply and 50Ω resistance, what is the current? (Variant 394)",
+    "type": "open-ended"
+  },
+  {
+    "id": 395,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 395)",
+    "type": "open-ended"
+  },
+  {
+    "id": 396,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of silicon in a semiconductor material? (Variant 396)",
+    "type": "open-ended"
+  },
+  {
+    "id": 397,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 397)",
+    "type": "open-ended"
+  },
+  {
+    "id": 398,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 48V supply and 330Ω resistance, what is the current? (Variant 398)",
+    "type": "open-ended"
+  },
+  {
+    "id": 399,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 399)",
+    "type": "open-ended"
+  },
+  {
+    "id": 400,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 400)",
+    "type": "open-ended"
+  },
+  {
+    "id": 401,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 401)",
+    "type": "open-ended"
+  },
+  {
+    "id": 402,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 402)",
+    "type": "open-ended"
+  },
+  {
+    "id": 403,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 24V? (Variant 403)",
+    "type": "open-ended"
+  },
+  {
+    "id": 404,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 110V supply and 2200Ω resistance, what is the current? (Variant 404)",
+    "type": "open-ended"
+  },
+  {
+    "id": 405,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 405)",
+    "type": "open-ended"
+  },
+  {
+    "id": 406,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 406)",
+    "type": "open-ended"
+  },
+  {
+    "id": 407,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of silicon in a semiconductor material? (Variant 407)",
+    "type": "open-ended"
+  },
+  {
+    "id": 408,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 408)",
+    "type": "open-ended"
+  },
+  {
+    "id": 409,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 5V? (Variant 409)",
+    "type": "open-ended"
+  },
+  {
+    "id": 410,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 410)",
+    "type": "open-ended"
+  },
+  {
+    "id": 411,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 411)",
+    "type": "open-ended"
+  },
+  {
+    "id": 412,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the setup time from the datasheet specifications? (Variant 412)",
+    "type": "open-ended"
+  },
+  {
+    "id": 413,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 413)",
+    "type": "open-ended"
+  },
+  {
+    "id": 414,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 15V? (Variant 414)",
+    "type": "open-ended"
+  },
+  {
+    "id": 415,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the thermal resistance from the datasheet specifications? (Variant 415)",
+    "type": "open-ended"
+  },
+  {
+    "id": 416,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 416)",
+    "type": "open-ended"
+  },
+  {
+    "id": 417,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 110V? (Variant 417)",
+    "type": "open-ended"
+  },
+  {
+    "id": 418,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the setup time from the datasheet specifications? (Variant 418)",
+    "type": "open-ended"
+  },
+  {
+    "id": 419,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 220V supply and 10Ω resistance, what is the current? (Variant 419)",
+    "type": "open-ended"
+  },
+  {
+    "id": 420,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type wafer. (Variant 420)",
+    "type": "open-ended"
+  },
+  {
+    "id": 421,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 421)",
+    "type": "open-ended"
+  },
+  {
+    "id": 422,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 24V supply and 1000Ω resistance, what is the current? (Variant 422)",
+    "type": "open-ended"
+  },
+  {
+    "id": 423,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of load regulation in a power supply. (Variant 423)",
+    "type": "open-ended"
+  },
+  {
+    "id": 424,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 424)",
+    "type": "open-ended"
+  },
+  {
+    "id": 425,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 425)",
+    "type": "open-ended"
+  },
+  {
+    "id": 426,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the maximum power dissipation from the datasheet specifications? (Variant 426)",
+    "type": "open-ended"
+  },
+  {
+    "id": 427,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 427)",
+    "type": "open-ended"
+  },
+  {
+    "id": 428,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 428)",
+    "type": "open-ended"
+  },
+  {
+    "id": 429,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 15V? (Variant 429)",
+    "type": "open-ended"
+  },
+  {
+    "id": 430,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type wafer. (Variant 430)",
+    "type": "open-ended"
+  },
+  {
+    "id": 431,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 110V? (Variant 431)",
+    "type": "open-ended"
+  },
+  {
+    "id": 432,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XNOR gate. (Variant 432)",
+    "type": "open-ended"
+  },
+  {
+    "id": 433,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 5V? (Variant 433)",
+    "type": "open-ended"
+  },
+  {
+    "id": 434,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 434)",
+    "type": "open-ended"
+  },
+  {
+    "id": 435,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 435)",
+    "type": "open-ended"
+  },
+  {
+    "id": 436,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 436)",
+    "type": "open-ended"
+  },
+  {
+    "id": 437,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 437)",
+    "type": "open-ended"
+  },
+  {
+    "id": 438,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 438)",
+    "type": "open-ended"
+  },
+  {
+    "id": 439,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 5V supply and 50Ω resistance, what is the current? (Variant 439)",
+    "type": "open-ended"
+  },
+  {
+    "id": 440,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 20V supply and 2200Ω resistance, what is the current? (Variant 440)",
+    "type": "open-ended"
+  },
+  {
+    "id": 441,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of germanium in a semiconductor material? (Variant 441)",
+    "type": "open-ended"
+  },
+  {
+    "id": 442,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 5V supply and 220Ω resistance, what is the current? (Variant 442)",
+    "type": "open-ended"
+  },
+  {
+    "id": 443,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 443)",
+    "type": "open-ended"
+  },
+  {
+    "id": 444,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the setup time from the datasheet specifications? (Variant 444)",
+    "type": "open-ended"
+  },
+  {
+    "id": 445,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the maximum power dissipation from the datasheet specifications? (Variant 445)",
+    "type": "open-ended"
+  },
+  {
+    "id": 446,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 110V supply and 2200Ω resistance, what is the current? (Variant 446)",
+    "type": "open-ended"
+  },
+  {
+    "id": 447,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the maximum power dissipation from the datasheet specifications? (Variant 447)",
+    "type": "open-ended"
+  },
+  {
+    "id": 448,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the leakage current from the datasheet specifications? (Variant 448)",
+    "type": "open-ended"
+  },
+  {
+    "id": 449,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 449)",
+    "type": "open-ended"
+  },
+  {
+    "id": 450,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 48V supply and 10Ω resistance, what is the current? (Variant 450)",
+    "type": "open-ended"
+  },
+  {
+    "id": 451,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 48V supply and 470Ω resistance, what is the current? (Variant 451)",
+    "type": "open-ended"
+  },
+  {
+    "id": 452,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 48V? (Variant 452)",
+    "type": "open-ended"
+  },
+  {
+    "id": 453,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 453)",
+    "type": "open-ended"
+  },
+  {
+    "id": 454,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 5V supply and 470Ω resistance, what is the current? (Variant 454)",
+    "type": "open-ended"
+  },
+  {
+    "id": 455,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 455)",
+    "type": "open-ended"
+  },
+  {
+    "id": 456,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 456)",
+    "type": "open-ended"
+  },
+  {
+    "id": 457,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 457)",
+    "type": "open-ended"
+  },
+  {
+    "id": 458,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 110V? (Variant 458)",
+    "type": "open-ended"
+  },
+  {
+    "id": 459,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of silicon in a semiconductor material? (Variant 459)",
+    "type": "open-ended"
+  },
+  {
+    "id": 460,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 460)",
+    "type": "open-ended"
+  },
+  {
+    "id": 461,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 461)",
+    "type": "open-ended"
+  },
+  {
+    "id": 462,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 462)",
+    "type": "open-ended"
+  },
+  {
+    "id": 463,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the thermal resistance from the datasheet specifications? (Variant 463)",
+    "type": "open-ended"
+  },
+  {
+    "id": 464,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 464)",
+    "type": "open-ended"
+  },
+  {
+    "id": 465,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XOR gate. (Variant 465)",
+    "type": "open-ended"
+  },
+  {
+    "id": 466,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 466)",
+    "type": "open-ended"
+  },
+  {
+    "id": 467,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the maximum power dissipation from the datasheet specifications? (Variant 467)",
+    "type": "open-ended"
+  },
+  {
+    "id": 468,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 5V? (Variant 468)",
+    "type": "open-ended"
+  },
+  {
+    "id": 469,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 469)",
+    "type": "open-ended"
+  },
+  {
+    "id": 470,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 5V supply and 470Ω resistance, what is the current? (Variant 470)",
+    "type": "open-ended"
+  },
+  {
+    "id": 471,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 471)",
+    "type": "open-ended"
+  },
+  {
+    "id": 472,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the leakage current from the datasheet specifications? (Variant 472)",
+    "type": "open-ended"
+  },
+  {
+    "id": 473,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 473)",
+    "type": "open-ended"
+  },
+  {
+    "id": 474,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 15V? (Variant 474)",
+    "type": "open-ended"
+  },
+  {
+    "id": 475,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XNOR gate. (Variant 475)",
+    "type": "open-ended"
+  },
+  {
+    "id": 476,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 476)",
+    "type": "open-ended"
+  },
+  {
+    "id": 477,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of germanium in a semiconductor material? (Variant 477)",
+    "type": "open-ended"
+  },
+  {
+    "id": 478,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 478)",
+    "type": "open-ended"
+  },
+  {
+    "id": 479,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 479)",
+    "type": "open-ended"
+  },
+  {
+    "id": 480,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of germanium in a semiconductor material? (Variant 480)",
+    "type": "open-ended"
+  },
+  {
+    "id": 481,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure diode forward voltage? (Variant 481)",
+    "type": "open-ended"
+  },
+  {
+    "id": 482,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 5V? (Variant 482)",
+    "type": "open-ended"
+  },
+  {
+    "id": 483,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 483)",
+    "type": "open-ended"
+  },
+  {
+    "id": 484,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 484)",
+    "type": "open-ended"
+  },
+  {
+    "id": 485,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 485)",
+    "type": "open-ended"
+  },
+  {
+    "id": 486,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of silicon in a semiconductor material? (Variant 486)",
+    "type": "open-ended"
+  },
+  {
+    "id": 487,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type wafer. (Variant 487)",
+    "type": "open-ended"
+  },
+  {
+    "id": 488,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XNOR gate. (Variant 488)",
+    "type": "open-ended"
+  },
+  {
+    "id": 489,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 12V? (Variant 489)",
+    "type": "open-ended"
+  },
+  {
+    "id": 490,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 490)",
+    "type": "open-ended"
+  },
+  {
+    "id": 491,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 20V? (Variant 491)",
+    "type": "open-ended"
+  },
+  {
+    "id": 492,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 492)",
+    "type": "open-ended"
+  },
+  {
+    "id": 493,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type wafer. (Variant 493)",
+    "type": "open-ended"
+  },
+  {
+    "id": 494,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 5V? (Variant 494)",
+    "type": "open-ended"
+  },
+  {
+    "id": 495,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 495)",
+    "type": "open-ended"
+  },
+  {
+    "id": 496,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the thermal resistance from the datasheet specifications? (Variant 496)",
+    "type": "open-ended"
+  },
+  {
+    "id": 497,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of ripple rejection in a power supply. (Variant 497)",
+    "type": "open-ended"
+  },
+  {
+    "id": 498,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 498)",
+    "type": "open-ended"
+  },
+  {
+    "id": 499,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 499)",
+    "type": "open-ended"
+  },
+  {
+    "id": 500,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 500)",
+    "type": "open-ended"
+  },
+  {
+    "id": 501,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 5V? (Variant 501)",
+    "type": "open-ended"
+  },
+  {
+    "id": 502,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 502)",
+    "type": "open-ended"
+  },
+  {
+    "id": 503,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 503)",
+    "type": "open-ended"
+  },
+  {
+    "id": 504,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 504)",
+    "type": "open-ended"
+  },
+  {
+    "id": 505,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 12V? (Variant 505)",
+    "type": "open-ended"
+  },
+  {
+    "id": 506,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of load regulation in a power supply. (Variant 506)",
+    "type": "open-ended"
+  },
+  {
+    "id": 507,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 507)",
+    "type": "open-ended"
+  },
+  {
+    "id": 508,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 508)",
+    "type": "open-ended"
+  },
+  {
+    "id": 509,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 509)",
+    "type": "open-ended"
+  },
+  {
+    "id": 510,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 510)",
+    "type": "open-ended"
+  },
+  {
+    "id": 511,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 48V? (Variant 511)",
+    "type": "open-ended"
+  },
+  {
+    "id": 512,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type silicon. (Variant 512)",
+    "type": "open-ended"
+  },
+  {
+    "id": 513,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 12V supply and 220Ω resistance, what is the current? (Variant 513)",
+    "type": "open-ended"
+  },
+  {
+    "id": 514,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 15V supply and 2200Ω resistance, what is the current? (Variant 514)",
+    "type": "open-ended"
+  },
+  {
+    "id": 515,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 220V? (Variant 515)",
+    "type": "open-ended"
+  },
+  {
+    "id": 516,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of germanium in a semiconductor material? (Variant 516)",
+    "type": "open-ended"
+  },
+  {
+    "id": 517,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of germanium in a semiconductor material? (Variant 517)",
+    "type": "open-ended"
+  },
+  {
+    "id": 518,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 518)",
+    "type": "open-ended"
+  },
+  {
+    "id": 519,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure transistor hFE? (Variant 519)",
+    "type": "open-ended"
+  },
+  {
+    "id": 520,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the leakage current from the datasheet specifications? (Variant 520)",
+    "type": "open-ended"
+  },
+  {
+    "id": 521,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 220V? (Variant 521)",
+    "type": "open-ended"
+  },
+  {
+    "id": 522,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 522)",
+    "type": "open-ended"
+  },
+  {
+    "id": 523,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type wafer. (Variant 523)",
+    "type": "open-ended"
+  },
+  {
+    "id": 524,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the input bias current from the datasheet specifications? (Variant 524)",
+    "type": "open-ended"
+  },
+  {
+    "id": 525,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 15V? (Variant 525)",
+    "type": "open-ended"
+  },
+  {
+    "id": 526,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the setup time from the datasheet specifications? (Variant 526)",
+    "type": "open-ended"
+  },
+  {
+    "id": 527,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 527)",
+    "type": "open-ended"
+  },
+  {
+    "id": 528,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of line regulation in a power supply. (Variant 528)",
+    "type": "open-ended"
+  },
+  {
+    "id": 529,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 529)",
+    "type": "open-ended"
+  },
+  {
+    "id": 530,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 530)",
+    "type": "open-ended"
+  },
+  {
+    "id": 531,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 531)",
+    "type": "open-ended"
+  },
+  {
+    "id": 532,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 10V? (Variant 532)",
+    "type": "open-ended"
+  },
+  {
+    "id": 533,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a XNOR gate. (Variant 533)",
+    "type": "open-ended"
+  },
+  {
+    "id": 534,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of germanium in a semiconductor material? (Variant 534)",
+    "type": "open-ended"
+  },
+  {
+    "id": 535,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 12V? (Variant 535)",
+    "type": "open-ended"
+  },
+  {
+    "id": 536,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure high resistance? (Variant 536)",
+    "type": "open-ended"
+  },
+  {
+    "id": 537,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 537)",
+    "type": "open-ended"
+  },
+  {
+    "id": 538,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOT gate. (Variant 538)",
+    "type": "open-ended"
+  },
+  {
+    "id": 539,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the input bias current from the datasheet specifications? (Variant 539)",
+    "type": "open-ended"
+  },
+  {
+    "id": 540,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 540)",
+    "type": "open-ended"
+  },
+  {
+    "id": 541,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 541)",
+    "type": "open-ended"
+  },
+  {
+    "id": 542,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 542)",
+    "type": "open-ended"
+  },
+  {
+    "id": 543,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 543)",
+    "type": "open-ended"
+  },
+  {
+    "id": 544,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of dopants in a semiconductor material? (Variant 544)",
+    "type": "open-ended"
+  },
+  {
+    "id": 545,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of line regulation in a power supply. (Variant 545)",
+    "type": "open-ended"
+  },
+  {
+    "id": 546,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 546)",
+    "type": "open-ended"
+  },
+  {
+    "id": 547,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 15V supply and 1000Ω resistance, what is the current? (Variant 547)",
+    "type": "open-ended"
+  },
+  {
+    "id": 548,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 10V? (Variant 548)",
+    "type": "open-ended"
+  },
+  {
+    "id": 549,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 220V? (Variant 549)",
+    "type": "open-ended"
+  },
+  {
+    "id": 550,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the thermal resistance from the datasheet specifications? (Variant 550)",
+    "type": "open-ended"
+  },
+  {
+    "id": 551,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure transistor hFE? (Variant 551)",
+    "type": "open-ended"
+  },
+  {
+    "id": 552,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 5V? (Variant 552)",
+    "type": "open-ended"
+  },
+  {
+    "id": 553,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of ripple rejection in a power supply. (Variant 553)",
+    "type": "open-ended"
+  },
+  {
+    "id": 554,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type germanium. (Variant 554)",
+    "type": "open-ended"
+  },
+  {
+    "id": 555,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 555)",
+    "type": "open-ended"
+  },
+  {
+    "id": 556,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the maximum power dissipation from the datasheet specifications? (Variant 556)",
+    "type": "open-ended"
+  },
+  {
+    "id": 557,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 15V supply and 10Ω resistance, what is the current? (Variant 557)",
+    "type": "open-ended"
+  },
+  {
+    "id": 558,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 48V? (Variant 558)",
+    "type": "open-ended"
+  },
+  {
+    "id": 559,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 12V supply and 470Ω resistance, what is the current? (Variant 559)",
+    "type": "open-ended"
+  },
+  {
+    "id": 560,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of germanium in a semiconductor material? (Variant 560)",
+    "type": "open-ended"
+  },
+  {
+    "id": 561,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 10V? (Variant 561)",
+    "type": "open-ended"
+  },
+  {
+    "id": 562,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure transistor hFE? (Variant 562)",
+    "type": "open-ended"
+  },
+  {
+    "id": 563,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of transient response in a power supply. (Variant 563)",
+    "type": "open-ended"
+  },
+  {
+    "id": 564,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 12V supply and 1000Ω resistance, what is the current? (Variant 564)",
+    "type": "open-ended"
+  },
+  {
+    "id": 565,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the leakage current from the datasheet specifications? (Variant 565)",
+    "type": "open-ended"
+  },
+  {
+    "id": 566,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 566)",
+    "type": "open-ended"
+  },
+  {
+    "id": 567,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the thermal resistance from the datasheet specifications? (Variant 567)",
+    "type": "open-ended"
+  },
+  {
+    "id": 568,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 568)",
+    "type": "open-ended"
+  },
+  {
+    "id": 569,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 220V supply and 10Ω resistance, what is the current? (Variant 569)",
+    "type": "open-ended"
+  },
+  {
+    "id": 570,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 12V supply and 10Ω resistance, what is the current? (Variant 570)",
+    "type": "open-ended"
+  },
+  {
+    "id": 571,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 571)",
+    "type": "open-ended"
+  },
+  {
+    "id": 572,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 572)",
+    "type": "open-ended"
+  },
+  {
+    "id": 573,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NAND gate. (Variant 573)",
+    "type": "open-ended"
+  },
+  {
+    "id": 574,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 110V supply and 1000Ω resistance, what is the current? (Variant 574)",
+    "type": "open-ended"
+  },
+  {
+    "id": 575,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure continuity? (Variant 575)",
+    "type": "open-ended"
+  },
+  {
+    "id": 576,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type wafer. (Variant 576)",
+    "type": "open-ended"
+  },
+  {
+    "id": 577,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 20V supply and 100Ω resistance, what is the current? (Variant 577)",
+    "type": "open-ended"
+  },
+  {
+    "id": 578,
+    "category": "Basics of Digital",
+    "questionText": "Draw the truth table for a NOR gate. (Variant 578)",
+    "type": "open-ended"
+  },
+  {
+    "id": 579,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 20V? (Variant 579)",
+    "type": "open-ended"
+  },
+  {
+    "id": 580,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of silicon in a semiconductor material? (Variant 580)",
+    "type": "open-ended"
+  },
+  {
+    "id": 581,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 581)",
+    "type": "open-ended"
+  },
+  {
+    "id": 582,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 582)",
+    "type": "open-ended"
+  },
+  {
+    "id": 583,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the leakage current from the datasheet specifications? (Variant 583)",
+    "type": "open-ended"
+  },
+  {
+    "id": 584,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 12V supply and 470Ω resistance, what is the current? (Variant 584)",
+    "type": "open-ended"
+  },
+  {
+    "id": 585,
+    "category": "Measurement Instruments and Specifications",
+    "questionText": "How would you use a multimeter to measure low capacitance? (Variant 585)",
+    "type": "open-ended"
+  },
+  {
+    "id": 586,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the leakage current from the datasheet specifications? (Variant 586)",
+    "type": "open-ended"
+  },
+  {
+    "id": 587,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 12V supply and 50Ω resistance, what is the current? (Variant 587)",
+    "type": "open-ended"
+  },
+  {
+    "id": 588,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type wafer. (Variant 588)",
+    "type": "open-ended"
+  },
+  {
+    "id": 589,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 12V supply and 10Ω resistance, what is the current? (Variant 589)",
+    "type": "open-ended"
+  },
+  {
+    "id": 590,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of wafer in a semiconductor material? (Variant 590)",
+    "type": "open-ended"
+  },
+  {
+    "id": 591,
+    "category": "Datasheet Parameters",
+    "questionText": "How do you calculate the input bias current from the datasheet specifications? (Variant 591)",
+    "type": "open-ended"
+  },
+  {
+    "id": 592,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 20V? (Variant 592)",
+    "type": "open-ended"
+  },
+  {
+    "id": 593,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 593)",
+    "type": "open-ended"
+  },
+  {
+    "id": 594,
+    "category": "Concept of Source and Load",
+    "questionText": "If a circuit has 15V supply and 1000Ω resistance, what is the current? (Variant 594)",
+    "type": "open-ended"
+  },
+  {
+    "id": 595,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "What is the role of germanium in a semiconductor material? (Variant 595)",
+    "type": "open-ended"
+  },
+  {
+    "id": 596,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of efficiency in a power supply. (Variant 596)",
+    "type": "open-ended"
+  },
+  {
+    "id": 597,
+    "category": "Basics of AC/DC",
+    "questionText": "What is the peak voltage of an AC signal with an RMS voltage of 15V? (Variant 597)",
+    "type": "open-ended"
+  },
+  {
+    "id": 598,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type wafer. (Variant 598)",
+    "type": "open-ended"
+  },
+  {
+    "id": 599,
+    "category": "Power Supply and Specifications",
+    "questionText": "Explain the significance of load regulation in a power supply. (Variant 599)",
+    "type": "open-ended"
+  },
+  {
+    "id": 600,
+    "category": "Basic Semiconductor Overview",
+    "questionText": "Explain the difference between P-type and N-type dopants. (Variant 600)",
+    "type": "open-ended"
+  }
+]

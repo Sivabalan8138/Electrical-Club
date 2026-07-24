@@ -1,0 +1,21 @@
+{
+  "name": {
+    "x": 337,
+    "y": 361,
+    "fontSize": 32,
+    "color": "",
+    "fontFamily": "Times-Bold"
+  },
+  "department": {
+    "x": 217,
+    "y": 405,
+    "fontSize": 16,
+    "color": "#333333",
+    "fontFamily": "Helvetica-Bold"
+  },
+  "qrCode": {
+    "x": 41,
+    "y": 458,
+    "size": 75
+  }
+}

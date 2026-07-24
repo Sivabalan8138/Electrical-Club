@@ -8,7 +8,7 @@ import {
 } from 'recharts';
 import {
   Cpu, LayoutDashboard, Users, UploadCloud, ShieldAlert,
-  GraduationCap, Download, Mail, Bell, LogOut, CheckCircle, RefreshCw
+  GraduationCap, Download, Mail, Bell, LogOut, CheckCircle, RefreshCw, Edit
 } from 'lucide-react';
 
 interface AnalyticsData {
@@ -107,6 +107,106 @@ export default function AdminDashboard() {
   const [regStatusMessage, setRegStatusMessage] = useState('');
   const [regStatusLoading, setRegStatusLoading] = useState(false);
 
+  // Certificate Template states
+  const [templateFile, setTemplateFile] = useState<File | null>(null);
+  const [templateUploadStatus, setTemplateUploadStatus] = useState('');
+  const [templateUploadLoading, setTemplateUploadLoading] = useState(false);
+
+  // Certificate Positioning states
+  const [certSettings, setCertSettings] = useState<any>({
+    name: { x: 420, y: 280, fontSize: 32, color: '#000000', fontFamily: 'Helvetica-Bold' },
+    department: { x: 420, y: 340, fontSize: 16, color: '#333333', fontFamily: 'Helvetica' },
+    qrCode: { x: 50, y: 450, size: 100 },
+  });
+  const [certSettingsStatus, setCertSettingsStatus] = useState('');
+  const [certSettingsLoading, setCertSettingsLoading] = useState(false);
+
+  const fetchCertSettings = async () => {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/admin/certificate-settings`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setCertSettings(data);
+      } else if (res.status === 401) {
+        localStorage.removeItem('adminToken');
+        router.push('/');
+      }
+    } catch (err) {
+      console.error('Failed to load certificate settings:', err);
+    }
+  };
+
+  const handleSaveCertSettings = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setCertSettingsLoading(true);
+    setCertSettingsStatus('Saving settings...');
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/admin/certificate-settings`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(certSettings),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setCertSettingsStatus('Certificate settings saved successfully!');
+      } else {
+        setCertSettingsStatus(`Error: ${data.error}`);
+        if (res.status === 401) {
+          localStorage.removeItem('adminToken');
+          router.push('/');
+        }
+      }
+    } catch (err) {
+      setCertSettingsStatus('Failed to save certificate settings.');
+    } finally {
+      setCertSettingsLoading(false);
+    }
+  };
+
+  const handleTemplateUpload = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!templateFile) return;
+
+    setTemplateUploadLoading(true);
+    setTemplateUploadStatus('Uploading template...');
+
+    const formData = new FormData();
+    formData.append('template', templateFile);
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/admin/certificate-template`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setTemplateUploadStatus('Certificate template uploaded successfully!');
+        setTemplateFile(null);
+      } else {
+        setTemplateUploadStatus(`Error: ${data.error}`);
+        if (res.status === 401) {
+          localStorage.removeItem('adminToken');
+          router.push('/');
+        }
+      }
+    } catch (err) {
+      setTemplateUploadStatus('Failed to upload certificate template.');
+    } finally {
+      setTemplateUploadLoading(false);
+    }
+  };
+
   const handleSendTestCert = async (e: React.FormEvent) => {
     e.preventDefault();
     setTestLoading(true);
@@ -160,6 +260,7 @@ export default function AdminDashboard() {
       fetchProctorLogs();
       fetchSmtpSettings();
       fetchRegistrationStatus();
+      fetchCertSettings();
     }
   }, [token]);
 
@@ -360,17 +461,9 @@ export default function AdminDashboard() {
   };
 
   // Attendance Sheet Downloader
-  const downloadAttendance = async (event: 'ELECTROQUEST', type: 'pdf' | 'excel') => {
+  const downloadAttendance = async (event: 'ELECTROQUEST', type: 'pdf' | 'excel' | 'word') => {
     const endpoint = `/api/admin/attendance/${type}/${event}`;
     try {
-      window.open(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${endpoint}?token=${token}`, '_blank');
-      // Direct browser download
-      const link = document.createElement('a');
-      link.href = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${endpoint}`;
-      link.setAttribute('download', `${event}_Attendance.${type}`);
-      document.body.appendChild(link);
-      // Wait, since endpoint requires auth header, direct window opening with authorization isn't standard via window.open.
-      // So instead, we fetch it with headers, convert to blob, and trigger download!
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${endpoint}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -379,7 +472,12 @@ export default function AdminDashboard() {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `${event}_Attendance_Sheet.${type === 'pdf' ? 'pdf' : 'xlsx'}`;
+        
+        let ext = 'pdf';
+        if (type === 'excel') ext = 'xlsx';
+        if (type === 'word') ext = 'docx';
+        
+        a.download = `${event}_Attendance_Sheet.${ext}`;
         document.body.appendChild(a);
         a.click();
         a.remove();
@@ -530,7 +628,7 @@ export default function AdminDashboard() {
               </div>
               <div className="glass-panel rounded-xl p-4 space-y-1">
                 <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest block">Quiz Average Score</span>
-                <p className="text-2xl font-bold text-[#00D4FF]">{analytics.quizStats.averageScore} / 75</p>
+                <p className="text-2xl font-bold text-[#00D4FF]">{analytics.quizStats.averageScore} / 50</p>
                 <span className="text-[9px] text-gray-400">Highest: {analytics.quizStats.highestScore}</span>
               </div>
               <div className="glass-panel rounded-xl p-4 space-y-1">
@@ -597,7 +695,7 @@ export default function AdminDashboard() {
                             {reg.member1Name} ({reg.member1Department}) - {reg.member1Email}
                           </td>
                           <td className="p-3 text-center font-bold text-white">
-                            {reg.quizAttempt ? `${reg.quizAttempt.score}/75` : 'N/A'}
+                            {reg.quizAttempt ? `${reg.quizAttempt.score}/50` : 'N/A'}
                           </td>
                           <td className="p-3 text-center">
                             <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
@@ -750,6 +848,12 @@ export default function AdminDashboard() {
                         className="w-full py-1.5 bg-green-500/10 text-green-400 border border-green-500/20 rounded text-[10px] font-bold hover:bg-green-500/20 cursor-pointer"
                       >
                         Download Excel
+                      </button>
+                      <button
+                        onClick={() => downloadAttendance('ELECTROQUEST', 'word')}
+                        className="w-full py-1.5 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded text-[10px] font-bold hover:bg-blue-500/20 cursor-pointer"
+                      >
+                        Download Word
                       </button>
                     </div>
                   </div>
@@ -1024,6 +1128,152 @@ export default function AdminDashboard() {
                   className="w-full py-2 bg-gradient-to-r from-blue-500 to-[#00D4FF] text-white font-bold text-xs rounded-xl shadow-md cursor-pointer"
                 >
                   {smtpLoading ? 'Saving Settings...' : 'Save & Activate SMTP'}
+                </button>
+              </form>
+            </div>
+
+            {/* Certificate Template Card */}
+            <div className="glass-panel border border-[#00D4FF]/25 rounded-2xl p-6 space-y-4 mt-8">
+              <h3 className="font-bold text-sm text-white flex items-center space-x-1.5 uppercase tracking-wider">
+                <UploadCloud className="h-4.5 w-4.5 text-[#00FFFF]" />
+                <span>Certificate Template Upload</span>
+              </h3>
+              <p className="text-gray-300 text-xs leading-relaxed">
+                Upload a base background template (PNG/JPG) for generated certificates. Leave enough blank space in the center for candidate details.
+              </p>
+              <form onSubmit={handleTemplateUpload} className="space-y-4">
+                <div>
+                  <input
+                    type="file"
+                    accept="image/png, image/jpeg"
+                    onChange={(e) => setTemplateFile(e.target.files ? e.target.files[0] : null)}
+                    className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#00D4FF]/10 file:text-[#00FFFF] hover:file:bg-[#00D4FF]/20"
+                  />
+                </div>
+                {templateUploadStatus && (
+                  <div className={`p-2 rounded text-xs ${templateUploadStatus.includes('Error') || templateUploadStatus.includes('Failed') ? 'bg-red-500/20 text-red-200' : 'bg-emerald-500/20 text-emerald-200'}`}>
+                    {templateUploadStatus}
+                  </div>
+                )}
+                <button
+                  type="submit"
+                  disabled={templateUploadLoading || !templateFile}
+                  className="w-full py-2 bg-gradient-to-r from-blue-500 to-[#00D4FF] text-white font-bold text-xs rounded-xl shadow-md cursor-pointer disabled:opacity-50"
+                >
+                  {templateUploadLoading ? 'Uploading...' : 'Upload Template'}
+                </button>
+              </form>
+            </div>
+
+            {/* Certificate Text Positioning Card */}
+            <div className="glass-panel border border-[#00D4FF]/25 rounded-2xl p-6 space-y-4 mt-8">
+              <h3 className="font-bold text-sm text-white flex items-center space-x-1.5 uppercase tracking-wider">
+                <Edit className="h-4.5 w-4.5 text-[#00FFFF]" />
+                <span>Certificate Text Positioning</span>
+              </h3>
+              <p className="text-gray-300 text-xs leading-relaxed">
+                Adjust the placement (X/Y coordinates), size, and style of the dynamic text overlay when using a custom template.
+              </p>
+              <form onSubmit={handleSaveCertSettings} className="space-y-6">
+                
+                {/* Candidate Name Settings */}
+                <div className="bg-[#081B33]/50 p-4 rounded-xl border border-white/5 space-y-3">
+                  <h4 className="text-[#00FFFF] font-bold text-xs uppercase">Candidate Name</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">X Position</label>
+                      <input type="number" value={certSettings.name.x} onChange={(e) => setCertSettings({...certSettings, name: {...certSettings.name, x: Number(e.target.value)}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none" />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Y Position</label>
+                      <input type="number" value={certSettings.name.y} onChange={(e) => setCertSettings({...certSettings, name: {...certSettings.name, y: Number(e.target.value)}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none" />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Font Size</label>
+                      <input type="number" value={certSettings.name.fontSize} onChange={(e) => setCertSettings({...certSettings, name: {...certSettings.name, fontSize: Number(e.target.value)}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none" />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Color (Hex)</label>
+                      <input type="text" value={certSettings.name.color} onChange={(e) => setCertSettings({...certSettings, name: {...certSettings.name, color: e.target.value}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none" />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Font Style</label>
+                      <select value={certSettings.name.fontFamily} onChange={(e) => setCertSettings({...certSettings, name: {...certSettings.name, fontFamily: e.target.value}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none">
+                        <option value="Helvetica">Normal</option>
+                        <option value="Helvetica-Bold">Bold</option>
+                        <option value="Helvetica-Oblique">Italic</option>
+                        <option value="Times-Roman">Times Normal</option>
+                        <option value="Times-Bold">Times Bold</option>
+                        <option value="Courier">Courier</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Department Settings */}
+                <div className="bg-[#081B33]/50 p-4 rounded-xl border border-white/5 space-y-3">
+                  <h4 className="text-[#00FFFF] font-bold text-xs uppercase">Department Name</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">X Position</label>
+                      <input type="number" value={certSettings.department.x} onChange={(e) => setCertSettings({...certSettings, department: {...certSettings.department, x: Number(e.target.value)}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none" />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Y Position</label>
+                      <input type="number" value={certSettings.department.y} onChange={(e) => setCertSettings({...certSettings, department: {...certSettings.department, y: Number(e.target.value)}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none" />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Font Size</label>
+                      <input type="number" value={certSettings.department.fontSize} onChange={(e) => setCertSettings({...certSettings, department: {...certSettings.department, fontSize: Number(e.target.value)}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none" />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Color (Hex)</label>
+                      <input type="text" value={certSettings.department.color} onChange={(e) => setCertSettings({...certSettings, department: {...certSettings.department, color: e.target.value}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none" />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Font Style</label>
+                      <select value={certSettings.department.fontFamily} onChange={(e) => setCertSettings({...certSettings, department: {...certSettings.department, fontFamily: e.target.value}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none">
+                        <option value="Helvetica">Normal</option>
+                        <option value="Helvetica-Bold">Bold</option>
+                        <option value="Helvetica-Oblique">Italic</option>
+                        <option value="Times-Roman">Times Normal</option>
+                        <option value="Times-Bold">Times Bold</option>
+                        <option value="Courier">Courier</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                {/* QR Code Settings */}
+                <div className="bg-[#081B33]/50 p-4 rounded-xl border border-white/5 space-y-3">
+                  <h4 className="text-[#00FFFF] font-bold text-xs uppercase">QR Code (Bottom Left)</h4>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">X Position</label>
+                      <input type="number" value={certSettings.qrCode.x} onChange={(e) => setCertSettings({...certSettings, qrCode: {...certSettings.qrCode, x: Number(e.target.value)}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none" />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Y Position</label>
+                      <input type="number" value={certSettings.qrCode.y} onChange={(e) => setCertSettings({...certSettings, qrCode: {...certSettings.qrCode, y: Number(e.target.value)}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none" />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Size (px)</label>
+                      <input type="number" value={certSettings.qrCode.size} onChange={(e) => setCertSettings({...certSettings, qrCode: {...certSettings.qrCode, size: Number(e.target.value)}})} className="w-full bg-[#081B33] border border-[#00D4FF]/20 text-white text-xs rounded-lg p-2 focus:ring-1 focus:ring-[#00FFFF] outline-none" />
+                    </div>
+                  </div>
+                </div>
+
+                {certSettingsStatus && (
+                  <div className={`p-2 rounded text-xs ${certSettingsStatus.includes('Error') || certSettingsStatus.includes('Failed') ? 'bg-red-500/20 text-red-200' : 'bg-emerald-500/20 text-emerald-200'}`}>
+                    {certSettingsStatus}
+                  </div>
+                )}
+                <button
+                  type="submit"
+                  disabled={certSettingsLoading}
+                  className="w-full py-2 bg-gradient-to-r from-blue-500 to-[#00D4FF] text-white font-bold text-xs rounded-xl shadow-md cursor-pointer disabled:opacity-50"
+                >
+                  {certSettingsLoading ? 'Saving...' : 'Save Settings'}
                 </button>
               </form>
             </div>

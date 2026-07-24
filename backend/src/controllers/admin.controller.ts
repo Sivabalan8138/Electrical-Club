@@ -4,8 +4,9 @@ import path from 'path';
 import ExcelJS from 'exceljs';
 import prisma from '../utils/db';
 import nodemailer from 'nodemailer';
-import { generateAttendancePDF, generateAttendanceExcel } from '../services/attendance.service';
+import { generateAttendancePDF, generateAttendanceExcel, generateAttendanceWord } from '../services/attendance.service';
 import { sendTestCertificate } from '../services/certificate.service';
+import { getCertificateSettings, saveCertificateSettings } from '../services/certificate.settings';
 
 // Get Admin Analytics Dashboard Data
 export const getAnalytics = async (req: Request, res: Response): Promise<void> => {
@@ -216,6 +217,21 @@ export const exportAttendanceExcelFile = async (req: Request, res: Response): Pr
     }
     const excelPath = await generateAttendanceExcel(event);
     res.download(excelPath);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || 'Failed to generate attendance sheet' });
+  }
+};
+
+// Export Attendance Word
+export const exportAttendanceWordFile = async (req: Request, res: Response): Promise<void> => {
+  const { event } = req.params; // "ELECTROQUEST"
+  try {
+    if (event !== 'ELECTROQUEST') {
+      res.status(400).json({ error: 'Invalid event type' });
+      return;
+    }
+    const wordPath = await generateAttendanceWord(event);
+    res.download(wordPath);
   } catch (error: any) {
     res.status(500).json({ error: error.message || 'Failed to generate attendance sheet' });
   }
@@ -519,5 +535,40 @@ export const updateRegistrationStatus = async (req: Request, res: Response): Pro
     });
   } catch (error: any) {
     res.status(500).json({ error: error.message || 'Failed to update registration status' });
+  }
+};
+
+export const uploadCertificateTemplate = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const file = req.file;
+    if (!file) {
+      res.status(400).json({ error: 'No template file uploaded' });
+      return;
+    }
+    const targetPath = path.join(__dirname, '../../uploads/certificate_template.png');
+    fs.copyFileSync(file.path, targetPath);
+    fs.unlinkSync(file.path); // clean up the original multer file
+    res.status(200).json({ message: 'Certificate template uploaded successfully' });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || 'Failed to upload certificate template' });
+  }
+};
+
+export const getCertSettings = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const settings = getCertificateSettings();
+    res.status(200).json(settings);
+  } catch (error: any) {
+    res.status(500).json({ error: 'Failed to fetch certificate settings' });
+  }
+};
+
+export const updateCertSettings = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const settings = req.body;
+    saveCertificateSettings(settings);
+    res.status(200).json({ message: 'Certificate settings updated successfully' });
+  } catch (error: any) {
+    res.status(500).json({ error: 'Failed to update certificate settings' });
   }
 };

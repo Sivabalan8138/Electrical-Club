@@ -18,6 +18,38 @@ const generateQR = async (text: string): Promise<Buffer> => {
   return Buffer.from(base64Data, 'base64');
 };
 
+// Helper to convert full department names to short form
+const getShortDepartment = (dept: string): string => {
+  if (!dept) return '';
+  const d = dept.toUpperCase().trim();
+  
+  if (d.includes('COMPUTER SCIENCE') || d === 'CSE') return 'CSE';
+  if (d.includes('ELECTRICAL AND ELECTRONICS') || d === 'EEE') return 'EEE';
+  if (d.includes('ELECTRONICS AND COMMUNICATION') || d === 'ECE') return 'ECE';
+  if (d.includes('INFORMATION TECHNOLOGY') || d === 'IT') return 'IT';
+  if (d.includes('ARTIFICIAL INTELLIGENCE') || d === 'AI' || d.includes('DATA SCIENCE') || d === 'AIDS') return 'AI&DS';
+  if (d.includes('MECHANICAL') || d === 'MECH' || d === 'ME') return 'MECH';
+  if (d.includes('CIVIL') || d === 'CE') return 'CIVIL';
+  if (d.includes('BIOMEDICAL') || d === 'BME') return 'BME';
+  if (d.includes('AERONAUTICAL') || d === 'AERO') return 'AERO';
+  if (d.includes('AGRICULTURE') || d === 'AGRI') return 'AGRI';
+  if (d.includes('CYBER')) return 'CYBER';
+
+  if (d.length <= 5) return d;
+
+  const words = d.split(/[\s,-]+/);
+  if (words.length > 1) {
+    let acronym = '';
+    for (const w of words) {
+      if (w !== 'AND' && w !== 'OF' && w !== '&' && w.length > 0) {
+        acronym += w[0];
+      }
+    }
+    return acronym || d;
+  }
+  return d;
+};
+
 // Mail transporter helper
 const getTransporter = async () => {
   const host = process.env.SMTP_HOST || 'smtp.mailtrap.io';
@@ -75,8 +107,11 @@ const getEtherealTransporter = async () => {
   };
 };
 
+import { getCertificateSettings } from './certificate.settings';
+
 export const generateCertificatePDF = async (
   recipientName: string,
+  department: string,
   eventTitle: string,
   certificateId: string,
   extraDetails?: string
@@ -93,137 +128,87 @@ export const generateCertificatePDF = async (
       const writeStream = fs.createWriteStream(pdfPath);
       doc.pipe(writeStream);
 
-      // 1. Draw elegant background border
-      doc
-        .rect(20, 20, doc.page.width - 40, doc.page.height - 40)
-        .lineWidth(4)
-        .stroke('#081B33');
-
-      doc
-        .rect(28, 28, doc.page.width - 56, doc.page.height - 56)
-        .lineWidth(1.5)
-        .stroke('#00D4FF');
-
-      // 2. Add header text
-      doc.y += 20;
-      doc
-        .fillColor('#081B33')
-        .fontSize(24)
-        .font('Helvetica-Bold')
-        .text('V.S.B. ENGINEERING COLLEGE, KARUR', { align: 'center' });
-
-      doc.moveDown(0.3);
-      doc
-        .fontSize(14)
-        .fillColor('#666666')
-        .font('Helvetica')
-        .text('DEPARTMENT OF ELECTRICAL AND ELECTRONICS ENGINEERING', { align: 'center' });
-
-      doc.moveDown(0.3);
-      doc
-        .fontSize(16)
-        .fillColor('#00D4FF')
-        .font('Helvetica-Bold')
-        .text('ELECTRICAL CLUB', { align: 'center' });
-
-      doc.moveDown(1.5);
-
-      // 3. Certificate type
-      doc
-        .fillColor('#081B33')
-        .fontSize(28)
-        .font('Helvetica-Bold')
-        .text('CERTIFICATE OF PARTICIPATION', { align: 'center' });
-
-      doc.moveDown(1);
-
-      // 4. Main Body
-      doc
-        .fillColor('#333333')
-        .fontSize(14)
-        .font('Helvetica')
-        .text('This is to certify that', { align: 'center' });
-
-      doc.moveDown(0.5);
-
-      // Recipient name (Highlighted)
-      doc
-        .fillColor('#00D4FF')
-        .fontSize(20)
-        .font('Helvetica-Bold')
-        .text(recipientName.toUpperCase(), { align: 'center' });
-
-      doc.moveDown(0.5);
-
-      const bodyText = `has successfully participated in the event ${eventTitle.toUpperCase()} organized by the Electrical Club, Department of Electrical and Electronics Engineering, V.S.B. Engineering College, Karur.`;
+      // 1. Draw elegant background border or load template
+      const templatePath = path.join(__dirname, '../../uploads/certificate_template.png');
+      const hasTemplate = fs.existsSync(templatePath);
       
-      doc
-        .fillColor('#333333')
-        .fontSize(13)
-        .font('Helvetica')
-        .text(bodyText, { align: 'center', lineGap: 4 });
-
-      if (extraDetails) {
-        doc.moveDown(0.5);
+      if (hasTemplate) {
+        doc.image(templatePath, 0, 0, { width: doc.page.width, height: doc.page.height });
+      } else {
         doc
-          .fillColor('#081B33')
-          .fontSize(11)
-          .font('Helvetica-Oblique')
-          .text(extraDetails, { align: 'center' });
+          .rect(20, 20, doc.page.width - 40, doc.page.height - 40)
+          .lineWidth(4)
+          .stroke('#081B33');
+
+        doc
+          .rect(28, 28, doc.page.width - 56, doc.page.height - 56)
+          .lineWidth(1.5)
+          .stroke('#00D4FF');
       }
 
-      doc.moveDown(1.5);
-
-      // 5. Generate QR Code
+      // Generate QR Code Buffer
       const verificationUrl = `${process.env.FRONTEND_URL || 'http://127.0.0.1'}/verify/certificate/${certificateId}`;
       const qrBuffer = await generateQR(verificationUrl);
 
-      // Position QR Code on the bottom-center/left
-      doc.image(qrBuffer, 60, doc.page.height - 150, { width: 90 });
-      doc
-        .fillColor('#666666')
-        .fontSize(8)
-        .font('Helvetica')
-        .text(`Verification ID: ${certificateId}`, 60, doc.page.height - 50);
+      if (!hasTemplate) {
+        // --- DEFAULT RENDERING ---
+        doc.y += 20;
+        doc.fillColor('#081B33').fontSize(24).font('Helvetica-Bold').text('V.S.B. ENGINEERING COLLEGE, KARUR', { align: 'center' });
+        doc.moveDown(0.3);
+        doc.fontSize(14).fillColor('#666666').font('Helvetica').text('DEPARTMENT OF ELECTRICAL AND ELECTRONICS ENGINEERING', { align: 'center' });
+        doc.moveDown(0.3);
+        doc.fontSize(16).fillColor('#00D4FF').font('Helvetica-Bold').text('ELECTRICAL CLUB', { align: 'center' });
+        doc.moveDown(1.5);
+        
+        doc.fillColor('#081B33').fontSize(28).font('Helvetica-Bold').text('CERTIFICATE OF PARTICIPATION', { align: 'center' });
+        doc.moveDown(1);
+        
+        doc.fillColor('#333333').fontSize(14).font('Helvetica').text('This is to certify that', { align: 'center' });
+        doc.moveDown(0.5);
+        doc.fillColor('#00D4FF').fontSize(20).font('Helvetica-Bold').text(recipientName.toUpperCase(), { align: 'center' });
+        doc.moveDown(0.5);
+        
+        const bodyText = `from ${department.toUpperCase()} department has successfully participated in the event ${eventTitle.toUpperCase()} organized by the Electrical Club, Department of Electrical and Electronics Engineering, V.S.B. Engineering College, Karur.`;
+        doc.fillColor('#333333').fontSize(13).font('Helvetica').text(bodyText, { align: 'center', lineGap: 4 });
+        
+        if (extraDetails) {
+          doc.moveDown(0.5);
+          doc.fillColor('#081B33').fontSize(11).font('Helvetica-Oblique').text(extraDetails, { align: 'center' });
+        }
+        
+        // 5. Generate QR Code
+        doc.image(qrBuffer, 60, doc.page.height - 150, { width: 90 });
+        doc.fillColor('#666666').fontSize(8).font('Helvetica').text(`Verification ID: ${certificateId}`, 60, doc.page.height - 50);
 
-      // 6. Digital Signatures on the bottom-right
-      const sigY = doc.page.height - 120;
-      
-      // Faculty signature block
-      doc
-        .fillColor('#081B33')
-        .fontSize(11)
-        .font('Times-Italic')
-        .text('Dr. A. EEE Coordinator', doc.page.width - 250, sigY, { align: 'center', width: 180 });
-      doc
-        .moveTo(doc.page.width - 250, sigY + 18)
-        .lineTo(doc.page.width - 70, sigY + 18)
-        .strokeColor('#cccccc')
-        .lineWidth(0.5)
-        .stroke();
-      doc
-        .fillColor('#666666')
-        .fontSize(9)
-        .font('Helvetica-Bold')
-        .text('FACULTY COORDINATOR', doc.page.width - 250, sigY + 22, { align: 'center', width: 180 });
+        // 6. Digital Signatures on the bottom-right
+        const sigY = doc.page.height - 120;
+        doc.fillColor('#081B33').fontSize(11).font('Times-Italic').text('Dr. A. EEE Coordinator', doc.page.width - 250, sigY, { align: 'center', width: 180 });
+        doc.moveTo(doc.page.width - 250, sigY + 18).lineTo(doc.page.width - 70, sigY + 18).strokeColor('#cccccc').lineWidth(0.5).stroke();
+        doc.fillColor('#666666').fontSize(9).font('Helvetica-Bold').text('FACULTY COORDINATOR', doc.page.width - 250, sigY + 22, { align: 'center', width: 180 });
+        doc.fillColor('#081B33').fontSize(11).font('Times-Italic').text('Student Secretary', doc.page.width - 450, sigY, { align: 'center', width: 180 });
+        doc.moveTo(doc.page.width - 450, sigY + 18).lineTo(doc.page.width - 270, sigY + 18).strokeColor('#cccccc').lineWidth(0.5).stroke();
+        doc.fillColor('#666666').fontSize(9).font('Helvetica-Bold').text('STUDENT COORDINATOR', doc.page.width - 450, sigY + 22, { align: 'center', width: 180 });
+      }
 
-      // Student coordinator signature block
-      doc
-        .fillColor('#081B33')
-        .fontSize(11)
-        .font('Times-Italic')
-        .text('Student Secretary', doc.page.width - 450, sigY, { align: 'center', width: 180 });
-      doc
-        .moveTo(doc.page.width - 450, sigY + 18)
-        .lineTo(doc.page.width - 270, sigY + 18)
-        .strokeColor('#cccccc')
-        .lineWidth(0.5)
-        .stroke();
-      doc
-        .fillColor('#666666')
-        .fontSize(9)
-        .font('Helvetica-Bold')
-        .text('STUDENT COORDINATOR', doc.page.width - 450, sigY + 22, { align: 'center', width: 180 });
+      if (hasTemplate) {
+        const settings = getCertificateSettings();
+        // Overwrite Name with absolute positioning
+        doc
+          .fillColor(settings.name.color)
+          .fontSize(settings.name.fontSize)
+          .font(settings.name.fontFamily)
+          .text(recipientName.toUpperCase(), settings.name.x, settings.name.y);
+          
+        // Department with absolute positioning
+        doc
+          .fillColor(settings.department.color)
+          .fontSize(settings.department.fontSize)
+          .font(settings.department.fontFamily)
+          .text(department.toUpperCase(), settings.department.x, settings.department.y);
+          
+        // QR Code with absolute positioning
+        doc.image(qrBuffer, settings.qrCode.x, settings.qrCode.y, { width: settings.qrCode.size });
+      }
 
       // Finalize PDF
       doc.end();
@@ -270,9 +255,13 @@ export const generateCertificateAndEmail = async (registrationId: string): Promi
       ? `${registration.member1Name} & ${registration.member2Name}`
       : registration.member1Name;
 
-    const extraDetails = `Score: ${registration.quizAttempt.score}/75 | Percentage: ${registration.quizAttempt.percentage}% | Duration: ${registration.quizAttempt.timeTaken.toFixed(2)} mins`;
+    const department = registration.member2Department && registration.member1Department !== registration.member2Department
+      ? `${getShortDepartment(registration.member1Department)} & ${getShortDepartment(registration.member2Department)}`
+      : getShortDepartment(registration.member1Department);
 
-    const pdfPath = await generateCertificatePDF(name, 'ElectroQuest (Technical Quiz)', certId, extraDetails);
+    const extraDetails = `Score: ${registration.quizAttempt.score}/50 | Percentage: ${registration.quizAttempt.percentage}% | Duration: ${registration.quizAttempt.timeTaken.toFixed(2)} mins`;
+
+    const pdfPath = await generateCertificatePDF(name, department, 'ElectroQuest (Technical Quiz)', certId, extraDetails);
 
     // Email to candidate(s)
     const { transporter, isTest } = await getTransporter();
@@ -299,7 +288,7 @@ export const generateCertificateAndEmail = async (registrationId: string): Promi
             </tr>
             <tr>
               <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Score</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${registration.quizAttempt.score} / 75</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">${registration.quizAttempt.score} / 50</td>
             </tr>
             <tr>
               <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Percentage</td>
@@ -346,7 +335,7 @@ export const sendTestCertificate = async (
   event: string
 ): Promise<{ message: string; previewUrl?: string; isMock: boolean }> => {
   const testCertId = `TEST-CERT-${Math.floor(1000 + Math.random() * 9000)}`;
-  const pdfPath = await generateCertificatePDF(name, event, testCertId, 'Test Run | Integrity Verification OK');
+  const pdfPath = await generateCertificatePDF(name, getShortDepartment('COMPUTER SCIENCE'), event, testCertId, 'Test Run | Integrity Verification OK');
 
   const { transporter, isTest } = await getTransporter();
 
