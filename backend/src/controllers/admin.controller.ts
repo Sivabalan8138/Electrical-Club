@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import fs from 'fs';
 import path from 'path';
-import ExcelJS from 'exceljs';
+import * as ExcelJS from 'exceljs';
 import prisma from '../utils/db';
 import nodemailer from 'nodemailer';
 import { generateAttendancePDF, generateAttendanceExcel, generateAttendanceWord } from '../services/attendance.service';
