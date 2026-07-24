@@ -293,10 +293,10 @@ export const sendBulkEmail = async (req: Request, res: Response): Promise<void> 
     }
 
     // Configure Mail Sender
-    const host = process.env.SMTP_HOST || 'smtp.mailtrap.io';
-    const port = parseInt(process.env.SMTP_PORT || '2525', 10);
-    const user = process.env.SMTP_USER || '';
-    const pass = process.env.SMTP_PASS || '';
+    const host = process.env.SMTP_HOST || 'smtp.gmail.com';
+    const port = parseInt(process.env.SMTP_PORT || '465', 10);
+    const user = process.env.SMTP_USER || 'electricalclubvsb@gmail.com';
+    const pass = process.env.SMTP_PASS || 'yuiolashfehuyoow';
 
     let mailer: any;
     if (!user || user === 'mock-user' || pass === 'mock-password') {
@@ -597,16 +597,11 @@ export const resendRegistrationEmail = async (req: Request, res: Response): Prom
       emails.push(registration.member2Email);
     }
 
-    const host = process.env.SMTP_HOST || 'smtp.mailtrap.io';
+    const host = process.env.SMTP_HOST || 'smtp.gmail.com';
     const port = parseInt(process.env.SMTP_PORT || '465', 10);
-    const user = process.env.SMTP_USER || '';
-    const pass = process.env.SMTP_PASS || '';
+    const user = process.env.SMTP_USER || 'electricalclubvsb@gmail.com';
+    const pass = process.env.SMTP_PASS || 'yuiolashfehuyoow';
     const from = process.env.SMTP_FROM || 'electricalclubvsb@gmail.com';
-
-    if (!user || user === 'mock-user') {
-      res.status(400).json({ error: 'SMTP is not configured on this server instance. Please configure real SMTP credentials to resend emails.' });
-      return;
-    }
 
     const transporter = nodemailer.createTransport({
       host,

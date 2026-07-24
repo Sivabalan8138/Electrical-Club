@@ -52,10 +52,10 @@ const getShortDepartment = (dept: string): string => {
 
 // Mail transporter helper
 const getTransporter = async () => {
-  const host = process.env.SMTP_HOST || 'smtp.mailtrap.io';
-  const port = parseInt(process.env.SMTP_PORT || '2525', 10);
-  const user = process.env.SMTP_USER || '';
-  const pass = process.env.SMTP_PASS || '';
+  const host = process.env.SMTP_HOST || 'smtp.gmail.com';
+  const port = parseInt(process.env.SMTP_PORT || '465', 10);
+  const user = process.env.SMTP_USER || 'electricalclubvsb@gmail.com';
+  const pass = process.env.SMTP_PASS || 'yuiolashfehuyoow';
 
   // If mock values are set, go straight to Ethereal fallback
   if (!user || user === 'mock-user' || pass === 'mock-password' || pass === 'abcd efgh ijkl mnop') {
