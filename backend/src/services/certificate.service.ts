@@ -30,11 +30,17 @@ const getTransporter = async () => {
     return await getEtherealTransporter();
   }
 
+  const cleanHost = host.trim();
+  const cleanUser = user.trim();
+  const cleanPass = pass.trim();
+
   const transporter = nodemailer.createTransport({
-    host,
+    host: cleanHost,
     port,
     secure: port === 465,
-    auth: { user, pass },
+    auth: { user: cleanUser, pass: cleanPass },
+    connectionTimeout: 10000, // 10s timeout instead of 2 mins
+    tls: { rejectUnauthorized: false }
   });
 
   try {

@@ -89,6 +89,11 @@ export const candidateLogin = async (req: Request, res: Response): Promise<void>
   const { candidateId } = req.body;
 
   try {
+    const quizLoginStatus = process.env.QUIZ_LOGIN_STATUS || 'OPEN';
+    if (quizLoginStatus === 'CLOSED') {
+      res.status(403).json({ error: 'The Quiz Portal is currently closed. Please wait for the admin to open it.' });
+      return;
+    }
     if (!candidateId) {
       res.status(400).json({ error: 'Candidate ID is required' });
       return;

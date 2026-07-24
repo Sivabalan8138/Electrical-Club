@@ -119,6 +119,7 @@ export default function AdminDashboard() {
   // Registration Control states
   const [eqRegStatus, setEqRegStatus] = useState<'OPEN' | 'CLOSED'>('OPEN');
   const [tbRegStatus, setTbRegStatus] = useState<'OPEN' | 'CLOSED'>('OPEN');
+  const [quizLoginStatus, setQuizLoginStatus] = useState<'OPEN' | 'CLOSED'>('OPEN');
   const [regStatusMessage, setRegStatusMessage] = useState('');
   const [regStatusLoading, setRegStatusLoading] = useState(false);
 
@@ -185,13 +186,14 @@ export default function AdminDashboard() {
         const data = await res.json();
         setEqRegStatus(data.electroQuest || 'OPEN');
         setTbRegStatus(data.thinkBig || 'OPEN');
+        setQuizLoginStatus(data.quizLogin || 'OPEN');
       }
     } catch (err) {
       console.error('Failed to load registration status:', err);
     }
   };
 
-  const handleUpdateRegStatus = async (eqStatus: 'OPEN' | 'CLOSED', tbStatus: 'OPEN' | 'CLOSED') => {
+  const handleUpdateRegStatus = async (eqStatus: 'OPEN' | 'CLOSED', tbStatus: 'OPEN' | 'CLOSED', qlStatus: 'OPEN' | 'CLOSED') => {
     setRegStatusLoading(true);
     setRegStatusMessage('Updating registration status...');
     try {
@@ -201,12 +203,13 @@ export default function AdminDashboard() {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ electroQuest: eqStatus, thinkBig: tbStatus }),
+        body: JSON.stringify({ electroQuest: eqStatus, thinkBig: tbStatus, quizLogin: qlStatus }),
       });
       const data = await res.json();
       if (res.ok) {
         setEqRegStatus(eqStatus);
         setTbRegStatus(tbStatus);
+        setQuizLoginStatus(qlStatus);
         setRegStatusMessage('Registration control updated successfully!');
       } else {
         setRegStatusMessage(`Error: ${data.error}`);
@@ -1350,7 +1353,7 @@ export default function AdminDashboard() {
                     <button
                       type="button"
                       disabled={regStatusLoading}
-                      onClick={() => handleUpdateRegStatus('OPEN', tbRegStatus)}
+                      onClick={() => handleUpdateRegStatus('OPEN', tbRegStatus, quizLoginStatus)}
                       className={`px-3 py-1 text-[10px] font-extrabold rounded-lg transition-all cursor-pointer ${
                         eqRegStatus === 'OPEN'
                           ? 'bg-emerald-500 text-[#081B33]'
@@ -1362,7 +1365,7 @@ export default function AdminDashboard() {
                     <button
                       type="button"
                       disabled={regStatusLoading}
-                      onClick={() => handleUpdateRegStatus('CLOSED', tbRegStatus)}
+                      onClick={() => handleUpdateRegStatus('CLOSED', tbRegStatus, quizLoginStatus)}
                       className={`px-3 py-1 text-[10px] font-extrabold rounded-lg transition-all cursor-pointer ${
                         eqRegStatus === 'CLOSED'
                           ? 'bg-rose-500 text-white'
@@ -1384,7 +1387,7 @@ export default function AdminDashboard() {
                     <button
                       type="button"
                       disabled={regStatusLoading}
-                      onClick={() => handleUpdateRegStatus(eqRegStatus, 'OPEN')}
+                      onClick={() => handleUpdateRegStatus(eqRegStatus, 'OPEN', quizLoginStatus)}
                       className={`px-3 py-1 text-[10px] font-extrabold rounded-lg transition-all cursor-pointer ${
                         tbRegStatus === 'OPEN'
                           ? 'bg-emerald-500 text-[#081B33]'
@@ -1396,9 +1399,43 @@ export default function AdminDashboard() {
                     <button
                       type="button"
                       disabled={regStatusLoading}
-                      onClick={() => handleUpdateRegStatus(eqRegStatus, 'CLOSED')}
+                      onClick={() => handleUpdateRegStatus(eqRegStatus, 'CLOSED', quizLoginStatus)}
                       className={`px-3 py-1 text-[10px] font-extrabold rounded-lg transition-all cursor-pointer ${
                         tbRegStatus === 'CLOSED'
+                          ? 'bg-rose-500 text-white'
+                          : 'bg-[#081B33] text-gray-400 border border-white/5 hover:border-gray-500'
+                      }`}
+                    >
+                      CLOSE
+                    </button>
+                  </div>
+                </div>
+
+                {/* Quiz Login Control */}
+                <div className="flex items-center justify-between border-t border-white/5 pt-3 mt-3">
+                  <div>
+                    <span className="text-xs font-bold text-white block">QUIZ PORTAL (CANDIDATE ID)</span>
+                    <span className="text-[10px] text-gray-400">Allow students to login to the quiz</span>
+                  </div>
+                  <div className="flex space-x-1">
+                    <button
+                      type="button"
+                      disabled={regStatusLoading}
+                      onClick={() => handleUpdateRegStatus(eqRegStatus, tbRegStatus, 'OPEN')}
+                      className={`px-3 py-1 text-[10px] font-extrabold rounded-lg transition-all cursor-pointer ${
+                        quizLoginStatus === 'OPEN'
+                          ? 'bg-emerald-500 text-[#081B33]'
+                          : 'bg-[#081B33] text-gray-400 border border-white/5 hover:border-gray-500'
+                      }`}
+                    >
+                      OPEN
+                    </button>
+                    <button
+                      type="button"
+                      disabled={regStatusLoading}
+                      onClick={() => handleUpdateRegStatus(eqRegStatus, tbRegStatus, 'CLOSED')}
+                      className={`px-3 py-1 text-[10px] font-extrabold rounded-lg transition-all cursor-pointer ${
+                        quizLoginStatus === 'CLOSED'
                           ? 'bg-rose-500 text-white'
                           : 'bg-[#081B33] text-gray-400 border border-white/5 hover:border-gray-500'
                       }`}

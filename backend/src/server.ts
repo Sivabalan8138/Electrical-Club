@@ -6,6 +6,8 @@ import multer from 'multer';
 import fs from 'fs';
 
 // Load environment variables
+import dns from 'dns';
+dns.setDefaultResultOrder('ipv4first');
 dotenv.config();
 
 // Initialize Express app

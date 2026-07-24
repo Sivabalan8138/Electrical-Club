@@ -427,12 +427,19 @@ export const updateSMTPSettings = async (req: Request, res: Response): Promise<v
 
     const testPass = pass && pass !== '••••••••' ? pass : (process.env.SMTP_PASS || '');
 
+    const cleanHost = host.trim();
+    const cleanPort = parseInt(port, 10);
+    const cleanUser = user.trim();
+    const cleanPass = testPass.trim();
+
     // Verify SMTP settings before saving
     const testTransporter = nodemailer.createTransport({
-      host,
-      port: parseInt(port, 10),
-      secure: parseInt(port, 10) === 465,
-      auth: { user, pass: testPass },
+      host: cleanHost,
+      port: cleanPort,
+      secure: cleanPort === 465,
+      auth: { user: cleanUser, pass: cleanPass },
+      connectionTimeout: 10000,
+      tls: { rejectUnauthorized: false }
     });
 
     let verified = true;
@@ -504,7 +511,8 @@ export const getRegistrationStatus = async (req: Request, res: Response): Promis
   try {
     const electroQuest = process.env.REGISTRATION_ELECTROQUEST || 'OPEN';
     const thinkBig = process.env.REGISTRATION_THINKBIG || 'OPEN';
-    res.status(200).json({ electroQuest, thinkBig });
+    const quizLogin = process.env.QUIZ_LOGIN_STATUS || 'OPEN';
+    res.status(200).json({ electroQuest, thinkBig, quizLogin });
   } catch (error: any) {
     res.status(500).json({ error: error.message || 'Failed to fetch registration status' });
   }
@@ -512,15 +520,19 @@ export const getRegistrationStatus = async (req: Request, res: Response): Promis
 
 // Update Registration Status (Admin)
 export const updateRegistrationStatus = async (req: Request, res: Response): Promise<void> => {
-  const { electroQuest, thinkBig } = req.body;
+  const { electroQuest, thinkBig, quizLogin } = req.body;
   try {
     if (!electroQuest || !thinkBig) {
-      res.status(400).json({ error: 'Both electroQuest and thinkBig status are required' });
+      res.status(400).json({ error: 'electroQuest and thinkBig status are required' });
       return;
     }
 
     process.env.REGISTRATION_ELECTROQUEST = electroQuest;
     process.env.REGISTRATION_THINKBIG = thinkBig;
+    
+    if (quizLogin) {
+      process.env.QUIZ_LOGIN_STATUS = quizLogin;
+    }
 
     // Persist to .env file
     const envPath = path.join(__dirname, '../../.env');
@@ -533,6 +545,9 @@ export const updateRegistrationStatus = async (req: Request, res: Response): Pro
       REGISTRATION_ELECTROQUEST: electroQuest,
       REGISTRATION_THINKBIG: thinkBig
     };
+    if (quizLogin) {
+      variables['QUIZ_LOGIN_STATUS'] = quizLogin;
+    }
 
     let lines = envContent.split('\n');
     for (const [key, val] of Object.entries(variables)) {

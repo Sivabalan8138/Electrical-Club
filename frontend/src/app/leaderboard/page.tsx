@@ -33,6 +33,13 @@ export default function LeaderboardPage() {
 
   useEffect(() => {
     fetchLeaderboard();
+
+    // Auto-refresh the leaderboard every 10 seconds
+    const interval = setInterval(() => {
+      fetchLeaderboard();
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const filteredEntries = entries.filter(
