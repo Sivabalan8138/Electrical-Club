@@ -1098,81 +1098,16 @@ export default function AdminDashboard() {
                 </p>
               </div>
 
-              <form onSubmit={handleSmtpSubmit} className="space-y-3">
-                <div className="grid grid-cols-2 gap-2">
-                  <div>
-                    <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">SMTP Host</label>
-                    <input
-                      type="text"
-                      required
-                      value={smtpHost}
-                      onChange={(e) => setSmtpHost(e.target.value)}
-                      placeholder="smtp.gmail.com"
-                      className="w-full bg-[#081B33] border border-[#00D4FF]/20 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#00FFFF]"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">SMTP Port</label>
-                    <input
-                      type="number"
-                      required
-                      value={smtpPort}
-                      onChange={(e) => setSmtpPort(e.target.value)}
-                      placeholder="465"
-                      className="w-full bg-[#081B33] border border-[#00D4FF]/20 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#00FFFF]"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">SMTP Username</label>
-                  <input
-                    type="text"
-                    required
-                    value={smtpUser}
-                    onChange={(e) => setSmtpUser(e.target.value)}
-                    placeholder="electricalclubvsb@gmail.com"
-                    className="w-full bg-[#081B33] border border-[#00D4FF]/20 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#00FFFF]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">SMTP Password</label>
-                  <input
-                    type="password"
-                    value={smtpPass}
-                    onChange={(e) => setSmtpPass(e.target.value)}
-                    placeholder="Enter Gmail App Password or SMTP password"
-                    className="w-full bg-[#081B33] border border-[#00D4FF]/20 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#00FFFF]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Default Sender Email</label>
-                  <input
-                    type="email"
-                    required
-                    value={smtpFrom}
-                    onChange={(e) => setSmtpFrom(e.target.value)}
-                    placeholder="electricalclubvsb@gmail.com"
-                    className="w-full bg-[#081B33] border border-[#00D4FF]/20 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#00FFFF]"
-                  />
-                </div>
-
-                {smtpStatus && (
-                  <div className="p-3 bg-[#081B33] border border-[#00D4FF]/10 rounded-xl text-[10px] text-gray-300 font-semibold leading-relaxed">
-                    {smtpStatus}
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={smtpLoading}
-                  className="w-full py-2 bg-gradient-to-r from-blue-500 to-[#00D4FF] text-white font-bold text-xs rounded-xl shadow-md cursor-pointer"
-                >
-                  {smtpLoading ? 'Saving Settings...' : 'Save & Activate SMTP'}
-                </button>
-              </form>
+              <div className="bg-green-500/10 border border-green-500/20 rounded p-4 text-center space-y-2 mt-4">
+                <CheckCircle className="h-8 w-8 text-green-400 mx-auto mb-2" />
+                <h4 className="text-green-400 font-bold text-sm">SMTP Configured Securely</h4>
+                <p className="text-gray-300 text-xs leading-relaxed">
+                  Your SMTP credentials are now locked in as a one-time fixed configuration via Vercel Environment Variables. They will be used automatically for all emails.
+                </p>
+                <p className="text-gray-400 text-[10px] mt-2 italic">
+                  To update these settings in the future, modify the Environment Variables in your Vercel Dashboard and redeploy the backend.
+                </p>
+              </div>
             </div>
 
             {/* Certificate Template Card */}
