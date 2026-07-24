@@ -723,37 +723,31 @@ export default function ElectroQuestPage() {
 
       {/* 5. ACTIVE QUIZ FRAME */}
       {viewState === 'QUIZ' && questions.length > 0 && (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Proctoring camera panel */}
-          <div className="lg:col-span-1 space-y-4">
-            <div className="glass-panel border border-[#00D4FF]/20 rounded-xl overflow-hidden shadow-lg p-4 space-y-4">
-              <h3 className="font-bold text-sm text-white flex items-center space-x-1.5">
-                <span className="w-2.5 h-2.5 bg-red-500 rounded-full animate-ping" />
-                <span>Active Proctor Feed</span>
-              </h3>
-              <div className="relative aspect-video w-full bg-black rounded-lg overflow-hidden border border-white/5">
-                <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover scale-x-[-1]" />
-              </div>
-              <div className="flex items-center justify-between text-xs text-gray-400 border-t border-white/5 pt-3">
-                <span className="flex items-center space-x-1">
-                  <Clock className="h-4.5 w-4.5 text-[#00FFFF]" />
-                  <span>Time Left:</span>
-                </span>
-                <span className="font-mono text-white font-bold text-sm">
-                  {Math.floor(timeRemaining)}m {Math.floor((timeRemaining % 1) * 60)}s
-                </span>
-              </div>
-              <div className="flex justify-between items-center text-xs">
-                <span className="text-gray-400">Warnings issued:</span>
-                <span className={`font-bold px-2 py-0.5 rounded-full ${warningsCount >= 2 ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'}`}>
-                  {warningsCount} / 3
-                </span>
-              </div>
+        <div className="w-full space-y-6">
+          {/* Proctoring camera panel (Hidden but kept in DOM for video stream processing) */}
+          <div className="hidden">
+            <video ref={videoRef} autoPlay playsInline muted />
+          </div>
+
+          {/* Quiz Status Header */}
+          <div className="glass-panel border border-[#00D4FF]/20 rounded-xl p-4 flex items-center justify-between shadow-lg">
+            <div className="flex items-center space-x-2">
+              <Clock className="h-4.5 w-4.5 text-[#00FFFF]" />
+              <span className="text-gray-400 text-xs">Time Left:</span>
+              <span className="font-mono text-white font-bold text-sm">
+                {Math.floor(timeRemaining)}m {Math.floor((timeRemaining % 1) * 60)}s
+              </span>
+            </div>
+            <div className="flex items-center space-x-2 text-xs">
+              <span className="text-gray-400">Warnings:</span>
+              <span className={`font-bold px-2 py-0.5 rounded-full ${warningsCount >= 2 ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'}`}>
+                {warningsCount} / 3
+              </span>
             </div>
           </div>
 
           {/* Quiz dashboard */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="space-y-6">
             {/* Question card */}
             <div className="glass-panel border border-[#00D4FF]/20 rounded-xl p-6 shadow-lg space-y-6">
               <div className="flex items-center justify-between border-b border-white/5 pb-4">

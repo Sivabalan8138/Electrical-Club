@@ -80,31 +80,22 @@ const getTransporter = async () => {
     return { transporter, isTest: false };
   } catch (verifyErr: any) {
     console.log(`[SMTP WARNING] Configured SMTP server (${host}) failed login verification: ${verifyErr.message}`);
-    console.log('Falling back automatically to Ethereal Mail sandbox...');
-    return await getEtherealTransporter();
+    throw new Error(`SMTP configuration error: ${verifyErr.message}`);
   }
 };
 
 const getEtherealTransporter = async () => {
-  return {
-    transporter: {
-      sendMail: async (mailOptions: any) => {
-        console.log('--- [MOCK MAIL SENDER] ---');
-        console.log(`To: ${mailOptions.to}`);
-        console.log(`Subject: ${mailOptions.subject}`);
-        console.log('---------------------------');
-        return {
-          messageId: 'mock-msg-id-' + Math.random().toString(36).substring(2, 9),
-          envelope: {} as any,
-          accepted: [] as any[],
-          rejected: [] as any[],
-          pending: [] as any[],
-          response: '250 OK',
-        };
-      },
-    } as any,
-    isTest: false,
-  };
+  const testAccount = await nodemailer.createTestAccount();
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: testAccount.user, // generated ethereal user
+      pass: testAccount.pass, // generated ethereal password
+    },
+  });
+  return { transporter, isTest: true };
 };
 
 import { getCertificateSettings } from './certificate.settings';
@@ -147,7 +138,7 @@ export const generateCertificatePDF = async (
       }
 
       // Generate QR Code Buffer
-      const verificationUrl = `${process.env.FRONTEND_URL || 'http://127.0.0.1'}/verify/certificate/${certificateId}`;
+      const verificationUrl = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/verify/certificate/${certificateId}`;
       const qrBuffer = await generateQR(verificationUrl);
 
       if (!hasTemplate) {

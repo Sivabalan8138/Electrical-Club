@@ -32,24 +32,22 @@ const getTransporter = async () => {
     return { transporter, isTest: false };
   } catch (verifyErr: any) {
     console.log(`[SMTP WARNING] Configured SMTP server (${host}) failed login verification: ${verifyErr.message}`);
-    console.log('Falling back automatically to Ethereal Mail sandbox...');
-    return await getEtherealTransporter();
+    throw new Error(`SMTP configuration error: ${verifyErr.message}`);
   }
 };
 
 const getEtherealTransporter = async () => {
-  return {
-    transporter: {
-      sendMail: async (mailOptions: any) => {
-        console.log('--- [MOCK MAIL SENDER - REGISTRATION] ---');
-        console.log(`To: ${mailOptions.to}`);
-        console.log(`Subject: ${mailOptions.subject}`);
-        console.log('-----------------------------------------');
-        return { messageId: 'mock-reg-msg-id-' + Math.random().toString(36).substring(2, 9) };
-      },
-    } as any,
-    isTest: false,
-  };
+  const testAccount = await nodemailer.createTestAccount();
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: testAccount.user, // generated ethereal user
+      pass: testAccount.pass, // generated ethereal password
+    },
+  });
+  return { transporter, isTest: true };
 };
 
 export const registerElectroQuest = async (req: Request, res: Response): Promise<void> => {
@@ -128,30 +126,67 @@ export const registerElectroQuest = async (req: Request, res: Response): Promise
       }
     }
 
-    // Generate Candidate ID (EQ2026-0001 sequence)
-    const count = await prisma.electroQuestRegistration.count();
-    const padNum = String(count + 1).padStart(4, '0');
-    const candidateId = `EQ2026-${padNum}`;
+    // Generate Candidate ID (EQ2026-0001 sequence) and create entry with retry logic
+    let candidateId = '';
+    let registration;
+    let attempts = 0;
+    const maxAttempts = 5;
 
-    // Create entry in database
-    const registration = await prisma.electroQuestRegistration.create({
-      data: {
-        teamName,
-        candidateId,
-        member1Name,
-        member1RegisterNumber,
-        member1Department,
-        member1Year,
-        member1Email,
-        member1MobileNumber,
-        member2Name,
-        member2RegisterNumber,
-        member2Department,
-        member2Year,
-        member2Email,
-        member2MobileNumber,
-      },
+    const lastRegistration = await prisma.electroQuestRegistration.findFirst({
+      orderBy: { candidateId: 'desc' },
     });
+
+    let baseNum = 1;
+    if (lastRegistration && lastRegistration.candidateId) {
+      const match = lastRegistration.candidateId.match(/EQ2026-(\d+)/);
+      if (match && match[1]) {
+        baseNum = parseInt(match[1], 10) + 1;
+      } else {
+        const count = await prisma.electroQuestRegistration.count();
+        baseNum = count + 1;
+      }
+    }
+
+    while (attempts < maxAttempts) {
+      try {
+        const currentNum = baseNum + attempts;
+        const padNum = String(currentNum).padStart(4, '0');
+        candidateId = `EQ2026-${padNum}`;
+
+        registration = await prisma.electroQuestRegistration.create({
+          data: {
+            teamName,
+            candidateId,
+            member1Name,
+            member1RegisterNumber,
+            member1Department,
+            member1Year,
+            member1Email,
+            member1MobileNumber,
+            member2Name,
+            member2RegisterNumber,
+            member2Department,
+            member2Year,
+            member2Email,
+            member2MobileNumber,
+          },
+        });
+        break; // Success
+      } catch (error: any) {
+        if (error.code === 'P2002' && error.meta?.target?.includes('candidateId')) {
+          attempts++;
+          if (attempts >= maxAttempts) {
+            throw new Error('System is busy registering another team. Please try submitting again.');
+          }
+        } else {
+          throw error;
+        }
+      }
+    }
+
+    if (!registration) {
+      throw new Error('Failed to create registration.');
+    }
 
     // Send email with Candidate ID
     const emails = [member1Email];

@@ -165,6 +165,10 @@ app.get('/', (req, res) => {
 });
 
 // Start Server
-app.listen(Number(PORT), '0.0.0.0', () => {
-  console.log(`Server is running in development mode on http://localhost:${PORT}`);
-});
+if (require.main === module || process.env.NODE_ENV !== 'production') {
+  app.listen(Number(PORT), () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;

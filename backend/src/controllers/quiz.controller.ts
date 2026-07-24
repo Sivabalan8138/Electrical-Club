@@ -2,6 +2,10 @@ import { Request, Response } from 'express';
 import prisma from '../utils/db';
 import { generateCertificateAndEmail } from '../services/certificate.service';
 
+// --- IN-MEMORY CACHE FOR HIGH CONCURRENCY ---
+let cachedQuestions: any[] = [];
+let lastCacheTime: number = 0;
+const CACHE_TTL = 60 * 1000; // 1 minute cache
 // Hash a string to a numeric seed
 function getSeedFromString(str: string): number {
   let hash = 0;
@@ -61,17 +65,22 @@ export const getQuizQuestions = async (req: Request, res: Response): Promise<voi
       return;
     }
 
-    // 2. Fetch all questions from the database
-    const questions = await prisma.question.findMany();
+    // 2. Fetch all questions (Use Cache to protect DB from sudden spikes)
+    const now = Date.now();
+    if (cachedQuestions.length === 0 || now - lastCacheTime > CACHE_TTL) {
+      cachedQuestions = await prisma.question.findMany();
+      lastCacheTime = now;
+      console.log(`[CACHE MISS] Fetched ${cachedQuestions.length} questions from DB.`);
+    }
 
-    if (questions.length === 0) {
+    if (cachedQuestions.length === 0) {
       res.status(400).json({ error: 'Question bank is empty. Please contact admin.' });
       return;
     }
 
     // 3. Shuffle using seeded RNG based on candidate ID
     const seed = getSeedFromString(candidateId);
-    const shuffledQuestions = shuffleWithSeed(questions, seed);
+    const shuffledQuestions = shuffleWithSeed(cachedQuestions, seed);
 
     // Limit to 50 questions
     const finalQuestions = shuffledQuestions.slice(0, 50);
@@ -145,7 +154,8 @@ export const submitQuiz = async (req: Request, res: Response): Promise<void> => 
       }
     });
 
-    const totalQuestionsAsked = Math.min(50, questions.length || 50);
+    const totalQuestionsInBank = await prisma.question.count();
+    const totalQuestionsAsked = Math.min(50, totalQuestionsInBank);
     const percentage = parseFloat(((score / totalQuestionsAsked) * 100).toFixed(2));
 
     // Save attempt
