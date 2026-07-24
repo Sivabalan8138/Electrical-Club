@@ -406,7 +406,7 @@ export default function ElectroQuestPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
+    <div className="min-h-[90vh] flex flex-col justify-center w-full max-w-4xl mx-auto px-4 py-12">
       {/* 1. INITIAL LANDING OPTIONS */}
       {viewState === 'INITIAL' && (
         <div className="text-center space-y-12 py-16">
