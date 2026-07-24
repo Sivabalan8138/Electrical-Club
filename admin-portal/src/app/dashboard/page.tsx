@@ -93,11 +93,11 @@ export default function AdminDashboard() {
   const [testLoading, setTestLoading] = useState(false);
 
   // SMTP Configuration states
-  const [smtpHost, setSmtpHost] = useState('');
-  const [smtpPort, setSmtpPort] = useState('');
-  const [smtpUser, setSmtpUser] = useState('');
+  const [smtpHost, setSmtpHost] = useState('smtp.gmail.com');
+  const [smtpPort, setSmtpPort] = useState('465');
+  const [smtpUser, setSmtpUser] = useState('electricalclubvsb@gmail.com');
   const [smtpPass, setSmtpPass] = useState('');
-  const [smtpFrom, setSmtpFrom] = useState('');
+  const [smtpFrom, setSmtpFrom] = useState('electricalclubvsb@gmail.com');
   const [smtpStatus, setSmtpStatus] = useState('');
   const [smtpLoading, setSmtpLoading] = useState(false);
 
