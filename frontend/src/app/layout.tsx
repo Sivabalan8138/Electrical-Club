@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import CircuitBackground from '@/components/CircuitBackground';
 import AIChatbot from '@/components/AIChatbot';
+import { Analytics } from '@vercel/analytics/next';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -34,6 +35,9 @@ export default function RootLayout({
 
         {/* Global floating AI assistant */}
         <AIChatbot />
+        
+        {/* Vercel Web Analytics */}
+        <Analytics />
       </body>
     </html>
   );
