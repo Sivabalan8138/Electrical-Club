@@ -171,6 +171,9 @@ export default function AdminDashboard() {
         setEqRegStatus(data.electroQuest || 'OPEN');
 
         setQuizLoginStatus(data.quizLogin || 'OPEN');
+      } else if (res.status === 401) {
+        localStorage.removeItem('adminToken');
+        router.push('/');
       }
     } catch (err) {
       console.error('Failed to load registration status:', err);
@@ -197,6 +200,10 @@ export default function AdminDashboard() {
         setRegStatusMessage('Registration control updated successfully!');
       } else {
         setRegStatusMessage(`Error: ${data.error}`);
+        if (res.status === 401) {
+          localStorage.removeItem('adminToken');
+          router.push('/');
+        }
       }
     } catch (err) {
       setRegStatusMessage('Failed to update registration settings.');
@@ -219,6 +226,9 @@ export default function AdminDashboard() {
         if (data.hasPassword) {
           setSmtpPass('••••••••');
         }
+      } else if (res.status === 401) {
+        localStorage.removeItem('adminToken');
+        router.push('/');
       }
     } catch (err) {
       console.error('Failed to load SMTP settings:', err);

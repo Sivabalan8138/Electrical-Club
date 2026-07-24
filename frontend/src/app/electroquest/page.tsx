@@ -512,7 +512,10 @@ export default function ElectroQuestPage() {
                       type="text"
                       required
                       value={member1Reg}
-                      onChange={(e) => setMember1Reg(e.target.value)}
+                      onChange={(e) => {
+                        setMember1Reg(e.target.value);
+                        setMember1Email(`${e.target.value}@vsbec.edu.in`);
+                      }}
                       placeholder="e.g. 927620105001"
                       className="w-full bg-[#081B33] border border-[#00D4FF]/15 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#00FFFF]"
                     />
@@ -564,8 +567,8 @@ export default function ElectroQuestPage() {
                     required
                     value={member1Email}
                     onChange={(e) => setMember1Email(e.target.value)}
-                    placeholder="student1@vsb.edu.in"
-                    className="w-full bg-[#081B33] border border-[#00D4FF]/15 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#00FFFF]"
+                    readOnly
+                    className="w-full bg-[#081B33]/50 border border-[#00D4FF]/15 rounded-xl px-3 py-2.5 text-xs text-gray-400 focus:outline-none cursor-not-allowed"
                   />
                 </div>
               </div>
@@ -607,7 +610,10 @@ export default function ElectroQuestPage() {
                         type="text"
                         required
                         value={member2Reg}
-                        onChange={(e) => setMember2Reg(e.target.value)}
+                        onChange={(e) => {
+                          setMember2Reg(e.target.value);
+                          setMember2Email(`${e.target.value}@vsbec.edu.in`);
+                        }}
                         className="w-full bg-[#081B33] border border-[#00D4FF]/15 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#00FFFF]"
                       />
                     </div>
@@ -656,7 +662,8 @@ export default function ElectroQuestPage() {
                       required
                       value={member2Email}
                       onChange={(e) => setMember2Email(e.target.value)}
-                      className="w-full bg-[#081B33] border border-[#00D4FF]/15 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#00FFFF]"
+                      readOnly
+                      className="w-full bg-[#081B33]/50 border border-[#00D4FF]/15 rounded-xl px-3 py-2.5 text-xs text-gray-400 focus:outline-none cursor-not-allowed"
                     />
                   </div>
                 </div>
