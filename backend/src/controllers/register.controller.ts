@@ -27,13 +27,8 @@ const getTransporter = async () => {
     tls: { rejectUnauthorized: false }
   });
 
-  try {
-    await transporter.verify();
-    return { transporter, isTest: false };
-  } catch (verifyErr: any) {
-    console.log(`[SMTP WARNING] Configured SMTP server (${host}) failed login verification: ${verifyErr.message}`);
-    throw new Error(`SMTP configuration error: ${verifyErr.message}`);
-  }
+  // Skip verification to improve response time
+  return { transporter, isTest: false };
 };
 
 const getEtherealTransporter = async () => {
@@ -188,57 +183,66 @@ export const registerElectroQuest = async (req: Request, res: Response): Promise
       throw new Error('Failed to create registration.');
     }
 
-    // Send email with Candidate ID
+    // Send successful response immediately
+    res.status(201).json({
+      message: 'Registration successful! Candidate ID has been sent to your email address.',
+      candidateId,
+    });
+
+    // Send email with Candidate ID in the background (fire and forget)
     const emails = [member1Email];
     if (member2Email) {
       emails.push(member2Email);
     }
 
-    const { transporter, isTest } = await getTransporter();
-    const mailOptions = {
-      from: process.env.SMTP_FROM || 'electricalclubvsb@gmail.com',
-      to: emails.join(', '),
-      subject: `ElectroQuest Quiz Registration - Candidate ID: ${candidateId}`,
-      text: `Dear Participants,\n\nYour registration for the ElectroQuest Technical Quiz organized by the Electrical Club, EEE Department, V.S.B. Engineering College, Karur, has been successfully processed.\n\nHere are your login credentials:\n\nTeam Name: ${teamName}\nCandidate ID: ${candidateId}\n\nYou can use this Candidate ID to log in and take the quiz on the portal. Good luck!\n\nBest Regards,\nElectrical Club Organizing Committee`,
-      html: `
-        <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
-          <h2 style="color: #081B33;">ElectroQuest Registration Confirmed!</h2>
-          <p>Dear Participants,</p>
-          <p>Your registration for the <strong>ElectroQuest Technical Quiz</strong> has been successfully processed.</p>
-          <p>Here are your access credentials for the competition:</p>
-          <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; background: #f9f9f9; width: 150px;">Team Name</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${teamName}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; background: #f9f9f9;">Candidate ID</td>
-              <td style="padding: 8px; border: 1px solid #ddd; color: #00D4FF; font-weight: bold; font-size: 16px;">${candidateId}</td>
-            </tr>
-          </table>
-          <p style="color: #666; font-size: 13px;"><em>Note: Keep this Candidate ID secure. It is required to log in and begin the proctored quiz.</em></p>
-          <br/>
-          <p>Best Regards,</p>
-          <p><strong>Electrical Club</strong><br/>Department of Electrical and Electronics Engineering<br/>V.S.B. Engineering College, Karur</p>
-        </div>
-      `,
-    };
+    getTransporter().then(async ({ transporter, isTest }) => {
+      try {
+        const mailOptions = {
+          from: process.env.SMTP_FROM || 'electricalclubvsb@gmail.com',
+          to: emails.join(', '),
+          subject: `ElectroQuest Quiz Registration - Candidate ID: ${candidateId}`,
+          text: `Dear Participants,\n\nYour registration for the ElectroQuest Technical Quiz organized by the Electrical Club, EEE Department, V.S.B. Engineering College, Karur, has been successfully processed.\n\nHere are your login credentials:\n\nTeam Name: ${teamName}\nCandidate ID: ${candidateId}\n\nYou can use this Candidate ID to log in and take the quiz on the portal. Good luck!\n\nBest Regards,\nElectrical Club Organizing Committee`,
+          html: `
+            <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
+              <h2 style="color: #081B33;">ElectroQuest Registration Confirmed!</h2>
+              <p>Dear Participants,</p>
+              <p>Your registration for the <strong>ElectroQuest Technical Quiz</strong> has been successfully processed.</p>
+              <p>Here are your access credentials for the competition:</p>
+              <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                <tr>
+                  <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; background: #f9f9f9; width: 150px;">Team Name</td>
+                  <td style="padding: 8px; border: 1px solid #ddd;">${teamName}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; background: #f9f9f9;">Candidate ID</td>
+                  <td style="padding: 8px; border: 1px solid #ddd; color: #00D4FF; font-weight: bold; font-size: 16px;">${candidateId}</td>
+                </tr>
+              </table>
+              <p style="color: #666; font-size: 13px;"><em>Note: Keep this Candidate ID secure. It is required to log in and begin the proctored quiz.</em></p>
+              <br/>
+              <p>Best Regards,</p>
+              <p><strong>Electrical Club</strong><br/>Department of Electrical and Electronics Engineering<br/>V.S.B. Engineering College, Karur</p>
+            </div>
+          `,
+        };
 
-    const info = await transporter.sendMail(mailOptions);
-    if (isTest) {
-      console.log(`[ETHEREAL REGISTRATION PREVIEW URL]: ${nodemailer.getTestMessageUrl(info)}`);
-    }
-    
-    // Mark email as sent
-    await prisma.electroQuestRegistration.update({
-      where: { id: registration.id },
-      data: { isEmailSent: true },
+        const info = await transporter.sendMail(mailOptions);
+        if (isTest) {
+          console.log(`[ETHEREAL REGISTRATION PREVIEW URL]: ${nodemailer.getTestMessageUrl(info)}`);
+        }
+        
+        // Mark email as sent
+        await prisma.electroQuestRegistration.update({
+          where: { id: registration.id },
+          data: { isEmailSent: true },
+        });
+      } catch (mailError: any) {
+        console.error(`[BACKGROUND MAIL ERROR] Failed to send registration email to ${emails.join(', ')}:`, mailError);
+      }
+    }).catch(err => {
+      console.error(`[BACKGROUND MAIL ERROR] Failed to initialize SMTP transporter:`, err);
     });
 
-    res.status(201).json({
-      message: 'Registration successful! Candidate ID has been sent to your email address.',
-      candidateId,
-    });
   } catch (error: any) {
     res.status(500).json({ error: error.message || 'Registration failed' });
   }
